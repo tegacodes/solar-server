@@ -10,7 +10,7 @@ import csv
 import os
 
 def read_csv():
-    filename = "../../charge-controller/data/tracerData2021-04-07.csv"
+    filename = "../../charge-controller/data/tracerData2021-03-15.csv"
 #    filename = (
 #        "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
 #    )
@@ -34,7 +34,7 @@ def read_csv():
 
 
 
-def render_pages(_local_data, _data, _weather, _server_data):
+def render_pages(_data, _weather, _server_data):
     print("Battery Percentage:" + str(_data["battery percentage"]))
     pages = [
         ("index_template.html", "index.html"),
@@ -92,17 +92,6 @@ def render_pages(_local_data, _data, _weather, _server_data):
             loadVoltage=_data["load voltage"],
             loadCurrent=_data["load current"],
             loadPower=_data["load power"],
-            name=_local_data["name"],
-            description=_local_data["description"],
-            location=_local_data["location"],
-            city=_local_data["city"],
-            country=_local_data["country"],
-            lat=_local_data["lat"],
-            long=_local_data["long"],
-            bgColor=_local_data["bgColor"],
-            serverColor=_local_data["serverColor"],
-            font=_local_data["font"],
-            borderStyle=_local_data["borderStyle"],
             weather=_weather["description"],
             temp=_weather["temp"],
             feelsLike=_weather["feels_like"],
@@ -117,11 +106,11 @@ def render_pages(_local_data, _data, _weather, _server_data):
         # print(rendered_html)
         open(output_filename, "w").write(rendered_html)
 
-def get_weather(_local_data):
+def get_weather():
     api_key = "24df3e6ca023273cd426f67e7ac06ac9"
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
-    lat = _local_data["lat"]
-    lon = _local_data["long"]
+    lat = 40.68
+    lon = -74
     complete_url = base_url + "lon=" + lon+  "&lat=" +lat + "&appid=" + api_key 
     print(complete_url)
 
@@ -156,49 +145,6 @@ def get_weather(_local_data):
 
     return output
 
-
-def get_local():
-    filename = "../../../local/local.json"
-    with open(filename) as infile:
-        local_data = json.load(infile)
-    return local_data  # dictionary
-
-# Get list of IP addresses that the pi can see
-def getDeviceInfo(getKey):
-    ipList = []
-
-    with open(deviceList) as f:
-      data = json.load(f)
-      print("Device List data:")
-      #print(data)
-
-    for i in range(len(data)):
-        ipList.append(data[i][getKey])
-
-    return ipList
-
-def get_ips():
-    # deviceInfoFile = "/home/pi/solar-protocol/backend/api/v1/deviceList.json"
-    # deviceInfo = json.dumps(deviceInfoFile)
-    #Get my ip
-    myIP = 	requests.get('http://whatismyip.akamai.com/').text
-    print("MY IP: ", type(myIP))
-
-    #Get IPs, using keyword ip
-    dstIP = getDeviceInfo('ip')
-    for index, item in enumerate(dstIP):
-        print(item)
-        if(item == myIP):
-            print("Replacing ip of self")
-            dstIP[index]="localhost"
-
-    log = getDeviceInfo('log')
-    serverNames = getDeviceInfo('name')
-    print (dstIP)
-    print (serverNames)
-    deviceList_data = dict(zip(serverNames, dstIP))
-    print (deviceList_data)
-    return deviceList_data
 
 
 def active_servers(dst):
@@ -284,7 +230,6 @@ local = 1
 path = "/home/pi/solar-protocol/backend"
 if local == 1:
     path = ""   
-deviceList = path + "../api/v1/deviceList.json"
 dstIP = []
 serverNames = []
 myIP = " "
@@ -292,9 +237,8 @@ myIP = " "
 
 def main():
     energy_data = read_csv()
-    local_data = get_local()
     try:
-        local_weather = get_weather(local_data)
+        local_weather = get_weather()
     except Exception as e:
         print(e)
         local_weather = {
@@ -305,19 +249,13 @@ def main():
             "sunset": "n/a"
         }
 
-    #1. get IP list of addresses
-    deviceList_data = get_ips()
-    #creates deviceList_data
+
   
     #2. import json data as an array of dictionarys
     with open('servers.json') as f:
         server_data = json.load(f)
         #3. Add ips to server_data
-        for item in server_data:
-            for key, value in deviceList_data.items():
-                if item["name"] == key:
-                    item["ip"] = value
-        print(server_data)
+    
     
     #3. get solar data and add it to server_data
     for item in server_data:
@@ -343,7 +281,7 @@ def main():
     
 
 
-    render_pages(local_data, energy_data, local_weather, server_data)
+    render_pages(energy_data, local_weather, server_data)
 
 
 
