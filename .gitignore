@@ -1,0 +1,22 @@
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+venv/
+*/venv/*
+env/
+*/env/*
+
+#this directory is needed, but we just don't want to overwrite it...
+charge-controller/data/
+
+*.vscode
+
+/backend/createHTML/local-content.json
+/backend/createHTML/local/*
+
+backend/api/v1/deviceList.json
+backend/visualization/clock.png
+
+/backend/visualization/archive/*
+
+.spenv

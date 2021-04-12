@@ -1,0 +1,33 @@
+{% extends "base-template.html" %} 
+{% block content %}
+{% if batteryPercentage >= 30 %}
+
+    <img class="full-col" src="images/map.gif" />
+    
+
+{% else %}
+{% endif %}
+  <div class="onecol-text">
+    <h3>Network</h3>
+    <p>
+      We are currently setting up servers in different locations around the world
+      and are seeking more stewards in different time zones and continents. If you
+      are interested in hosting a server, please see our
+      <a href="call.html">call for stewards</a>.
+    </p>
+    <h4>Servers in the Network</h4>
+    <div class="network-overview">
+    {% for item in servers %}
+      <div class="server-box">
+        <h3>{{item.name}}, {{item.location}}, {{item.country}}</h3>
+        <img src={{item.image_path}}>
+        <p><i>Server status:</i> {{item.status}}</p>
+        <p><i>Last check-in:</i> {{item.time_stamp}} </p>
+        <p><i>About:</i> {{item.description}}</p>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}
+
