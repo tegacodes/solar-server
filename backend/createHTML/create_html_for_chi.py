@@ -10,7 +10,7 @@ import csv
 import os
 
 def read_csv():
-    filename = "../../charge-controller/data/tracerData2021-03-15.csv"
+    filename = "../../charge-controller/data/tracerData2021-05-01.csv"
 #    filename = (
 #        "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
 #    )
@@ -88,7 +88,7 @@ def render_pages(_data, _weather, _server_data):
             solarPowerH=_data["PV power H"],
             batteryVoltage=_data["battery voltage"],
             batteryPercentage=round(_data["battery percentage"]*100, 1),
-            batterCurrent=_data["battery current"],
+            batteryCurrent=_data["battery current"],
             loadVoltage=_data["load voltage"],
             loadCurrent=_data["load current"],
             loadPower=_data["load power"],
