@@ -11,27 +11,24 @@ import os
 
 def read_csv():
     # filename = "../../charge-controller/data/tracerData2021-05-01.csv"
-   filename = (
-       "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
-   )
-    with open(filename, "r") as data:
+   filename = "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
+   with open(filename, "r") as data:
         alllines = [line for line in csv.DictReader(data)]
 
-    line = alllines[-1]
-    line["PV voltage"] = float(line["PV voltage"])
-    line["PV current"] = float(line["PV current"])
-    line["PV power L"] = float(line["PV power L"])
-    line["PV power H"] = float(line["PV power H"])
-    line["battery voltage"] = float(line["battery voltage"])
-    line["battery current"] = float(line["battery current"])
-    line["battery power L"] = float(line["battery power L"])
-    line["battery power H"] = float(line["battery power H"])
-    line["load voltage"] = float(line["load voltage"])
-    line["load current"] = float(line["load current"])
-    line["load power"] = float(line["load power"])
-    line["battery percentage"] = float(line["battery percentage"])
-    return line
-
+   line = alllines[-1]
+   line["PV voltage"] = float(line["PV voltage"])
+   line["PV current"] = float(line["PV current"])
+   line["PV power L"] = float(line["PV power L"])
+   line["PV power H"] = float(line["PV power H"])
+   line["battery voltage"] = float(line["battery voltage"])
+   line["battery current"] = float(line["battery current"])
+   line["battery power L"] = float(line["battery power L"])
+   line["battery power H"] = float(line["battery power H"])
+   line["load voltage"] = float(line["load voltage"])
+   line["load current"] = float(line["load current"])
+   line["load power"] = float(line["load power"])
+   line["battery percentage"] = float(line["battery percentage"])
+   return line
 
 
 def render_pages(_data, _weather, _server_data):
