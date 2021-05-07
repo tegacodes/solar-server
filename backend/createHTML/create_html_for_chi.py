@@ -10,10 +10,10 @@ import csv
 import os
 
 def read_csv():
-    filename = "../../charge-controller/data/tracerData2021-05-01.csv"
-#    filename = (
-#        "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
-#    )
+    # filename = "../../charge-controller/data/tracerData2021-05-01.csv"
+   filename = (
+       "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
+   )
     with open(filename, "r") as data:
         alllines = [line for line in csv.DictReader(data)]
 
