@@ -3,10 +3,9 @@ import math
 
 import pandas as pd
 import json
-#import datetime
-from datetime import *
+import datetime
 from dateutil.relativedelta import relativedelta
-from PIL import Image
+# from PIL import Image
 import webcolors
 import csv
 
@@ -15,10 +14,10 @@ from json.decoder import JSONDecodeError
 
 
 def read_csv():
-    filename = "../../charge-controller/data/tracerData2021-03-15.csv"
-    # filename = (
-    #     "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
-    # )
+    #filename = "../../charge-controller/data/tracerData2021-03-15.csv"
+    filename = (
+        "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
+    )
     with open(filename, "r") as data:
         alllines = [line for line in csv.DictReader(data)]
  
@@ -130,7 +129,7 @@ def draw_sun_graph(surface, data, label, w, h):
         #get each hour
         date = line["datetime"]
         date = date[:-7]
-        t1 = datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
+        t1 = datetime.datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
         print(t1.hour)
 
         # #get average for each hour
