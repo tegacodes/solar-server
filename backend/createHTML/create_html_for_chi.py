@@ -253,32 +253,9 @@ def main():
         server_data = json.load(f)
         #3. Add ips to server_data
     
-    
-    #3. get solar data and add it to server_data
-    for item in server_data:
-        try:
-            solar_data = get_pv_value(item["ip"])
-            status = "online"
-        except Exception as e:
-            solar_data = None
-            status = "offline"
-        item["solar_voltage"] = solar_data
-        item["status"] = status
-        try: 
-            time_stamp = getDeviceInfo('log')[0][0]
-            print("time_stamp!!!!!!!!!!!!!!!!!!!!", time_stamp)
-            time_stamp = ":".join(time_stamp.split(":")[0:-1])
-        except Exception as e:
-            time_stamp = "N/A"
-        item["time_stamp"] = time_stamp
-    
-    #4. get images and 
-    print(server_data)
-    check_images(server_data)
-    
 
 
-    render_pages(energy_data, local_weather, server_data)
+    render_pages(energy_data, local_weather)
 
 
 
