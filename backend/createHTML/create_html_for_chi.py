@@ -247,12 +247,7 @@ def main():
         }
 
 
-  
-    #2. import json data as an array of dictionarys
-    with open('servers.json') as f:
-        server_data = json.load(f)
-        #3. Add ips to server_data
-    
+
 
 
     render_pages(energy_data, local_weather)
