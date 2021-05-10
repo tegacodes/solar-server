@@ -163,7 +163,7 @@ def main():
     surface2 = g.Surface(width=w, height=h)
     surface3 = g.Surface(width=w, height=h)
     surface4 = g.Surface(width=100, height=h)
-    draw_graph(surface1, d, "battery percentage", w, h, 0, 1)
+    draw_graph(surface1, d, "battery percentage", w, h, 0, 1) #set variable to map
     draw_graph(surface2, d, "PV power L", w, h, -10, 40)
     draw_graph(surface3, d, "load voltage", w, h, 0, 17.5)
     draw_sun_graph(surface4, d, "PV voltage", w, h)
