@@ -10,37 +10,37 @@ import csv
 import os
 
 def read_csv():
-    # filename = "../../charge-controller/data/tracerData2021-05-01.csv"
-   filename = "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
-   with open(filename, "r") as data:
+    filename = "../../charge-controller/data/tracerData2021-05-01.csv"
+    # filename = "../../charge-controller/data/tracerData" + str(datetime.date.today()) + ".csv"
+    with open(filename, "r") as data:
         alllines = [line for line in csv.DictReader(data)]
 
-   line = alllines[-1]
-   line["PV voltage"] = float(line["PV voltage"])
-   line["PV current"] = float(line["PV current"])
-   line["PV power L"] = float(line["PV power L"])
-   line["PV power H"] = float(line["PV power H"])
-   line["battery voltage"] = float(line["battery voltage"])
-   line["battery current"] = float(line["battery current"])
-   line["battery power L"] = float(line["battery power L"])
-   line["battery power H"] = float(line["battery power H"])
-   line["load voltage"] = float(line["load voltage"])
-   line["load current"] = float(line["load current"])
-   line["load power"] = float(line["load power"])
-   line["battery percentage"] = float(line["battery percentage"])
-   return line
+    line = alllines[-1]
+    line["PV voltage"] = float(line["PV voltage"])
+    line["PV current"] = float(line["PV current"])
+    line["PV power L"] = float(line["PV power L"])
+    line["PV power H"] = float(line["PV power H"])
+    line["battery voltage"] = float(line["battery voltage"])
+    line["battery current"] = float(line["battery current"])
+    line["battery power L"] = float(line["battery power L"])
+    line["battery power H"] = float(line["battery power H"])
+    line["load voltage"] = float(line["load voltage"])
+    line["load current"] = float(line["load current"])
+    line["load power"] = float(line["load power"])
+    line["battery percentage"] = float(line["battery percentage"])
+    return line
 
 
-def render_pages(_data, _weather, _server_data):
+# def render_pages(_data, _weather, _server_data):
+def render_pages(_data, _weather):
     print("Battery Percentage:" + str(_data["battery percentage"]))
     pages = [
-        ("index_template.html", "index.html"),
-        ("network_template.html", "network.html"),
-        ("call_template.html", "call.html"),
-        ("documentation_template.html", "documentation.html"),
-        ("solar-web_template.html", "solar-web.html"),
-        ("manifesto_template.html", "manifesto.html"),
-        ("library_template.html", "library.html"),
+        ("index-template.html", "index.html"),
+        ("about-template.html", "about.html"),
+        ("design-research-template.html", "design-research.html"),
+        ("resources-template.html", "resources.html"),
+        ("outputs-template.html", "outputs.html"),
+        ("system-data-template.html", "system-data.html"),
     ]
 
     for template_filename, output_filename in pages:
@@ -97,7 +97,7 @@ def render_pages(_data, _weather, _server_data):
             zone=zone,
             leadImage=leadImage,
             mode=mode, 
-            servers=_server_data
+            # servers=_server_data
         )
 
         # print(rendered_html)
@@ -108,7 +108,8 @@ def get_weather():
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     lat = 40.68
     lon = -74
-    complete_url = base_url + "lon=" + lon+  "&lat=" +lat + "&appid=" + api_key 
+    # complete_url = base_url + "lon=" + lon+  "&lat=" +lat + "&appid=" + api_key 
+    complete_url = "http://api.openweathermap.org/data/2.5/weather?lon=40.68&lat=-74&appid=24df3e6ca023273cd426f67e7ac06ac9"
     print(complete_url)
 
     response = requests.get(complete_url)
