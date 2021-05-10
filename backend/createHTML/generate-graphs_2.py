@@ -1,5 +1,5 @@
 import gizeh as g
-from datetime import *
+import datetime
 from dateutil.relativedelta import relativedelta
 import csv
 from json.decoder import JSONDecodeError
@@ -64,7 +64,7 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max):
         valy = float(line[label])
         date = line["datetime"]
         date = date[:-7]
-        t = datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
+        t = datetime.datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
         seconds=t.hour * 3600 + t.minute * 60 + t.second
         total_seconds = 24*60*60
         print("seconds:", seconds)
@@ -153,7 +153,7 @@ def draw_sun_graph(surface, data, label, w, h):
         #get each hour
         date = line["datetime"]
         date = date[:-7]
-        t1 = datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
+        t1 = datetime.datetime.strptime(date,'%Y-%m-%d %H:%M:%S')
 
         
 
