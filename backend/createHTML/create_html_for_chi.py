@@ -16,7 +16,7 @@ def apache_log_reader():
         parser = LogParser("%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"")
         count_hit = 0
         count_data = 0
-        with open ('../../../var/log/apache2/access.log') as fp:
+        with open ('../../../../../var/log/apache2/access.log') as fp:
                 for entry in parser.parse_lines(fp):
                         count_hit += 1
                         count_data += entry.bytes_sent
@@ -255,7 +255,7 @@ def main():
     generateGraphs.main()
     energy_data = read_csv()
     
-    count_hit, count_data = apache_log_reader():
+    count_hit, count_data = apache_log_reader()
     try:
         local_weather = get_weather()
     except Exception as e:
