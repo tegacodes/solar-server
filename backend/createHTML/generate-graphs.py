@@ -276,7 +276,12 @@ def draw_sun_graph(surface, data, label, w, h):
     print("sunset", sunset)
     print("sunrise", sunrise)
 
-    sr = datetime.datetime.strptime(sunrise,'%H:%M %p')
+    sr = datetime.datetime.strptime(sunrise,'%I:%M %p')
+    sunrise = datetime.datetime.strftime(sr, "%H:%M")
+
+
+
+
     sr_seconds=sr.hour * 3600 + sr.minute * 60
     total_seconds = 24*60*60
     print("sr_seconds:", sr_seconds)
