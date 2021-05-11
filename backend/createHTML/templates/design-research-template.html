@@ -27,24 +27,15 @@
     <li>We decided not to use any Javascript on the frontend of this website and so all of our visualizations are generated server-side using python libraries such as MatPlotLib. Where possible, the generation of the visual assets on this site are done on the server rather than in the browser. We adopted this as an approach that fosters accountability for our design decisions. We know that the computational cycles required to generate our imagery are powered by solar energy rather than potentially powered as fossil energy in the browser. This design approach also minimizes the energy consumption for the user. </li>
 </ul>
 <h4>Literature Review</h4>
-
-<h5>Server Energy Consumption</h5>
 <p><i>By Alex Nathanson, 2019.</i></p>
-
+<h5>Server Energy Consumption</h5>
 <p>There is a significant amount of uncertainty and disagreement when it comes to analyzing the energy consumption of information and communication technology (ICT) and even more when looking specifically at server energy consumption. This uncertainty spans decades and its history is thoroughly described in Assessing the environmental impact of data centres part 1: Background, energy use and metrics (Whitehead, Andrews, Shah, and Maidment). The system boundary, i.e. what elements of the system are or are not being analyzed, and the method of analysis are two primary decisions that researchers must make and prior studies show that there isn’t a consistent approach as to how to make these determinations (can we list the refs to some of these studies?). These assessments require researchers to make a variety of assumptions about typical system usage as well as rely on pre-existing energy analysis and life cycle analysis (LCA) of specific subsystems. This prior work is often beyond their field of expertise and introduces additional variability and potentially inaccuracy.</p>
-
 <p>There are several commonly used methods for investigating ICT energy consumption, each with their own pros and cons. The two most common methods are top-down and bottom-up, which are basic frameworks that are both relatively standardized but that change slightly depending on the specific domain. In a top-down study, researchers must first determine the total energy consumption of the system as a whole and then divide it by the percentage that applies to their particular subsystem. The bottom-up approach uses a more detailed analysis of a particular subsystem or individual pieces of hardware and then attempts to generalize those results to the larger system. </p>
-
 <p>There does not seem to be any standardized way to determine a system boundary. As a result, a lot ICT assessments arrive at conflicting results, even when using similar methods. System boundaries can include data centers, undersea cable, IP core network, access networks, home/on-site networking equipment, user devices, particular hardware or software configurations, type of data, geography, and country, among others.</p>
-
 <p>If the system boundary includes any networking components, a crucial piece of the assessment is the amount of energy consumed by the data being transmitted, measured in kWh/GB (although some studies use joules per bit), as well as the LCA for any network infrastructure.
-
 <p>As with most of the elements of this process, there are no widely agreed upon and generalizable values for these rates. In addition to boundary issues, this is due to the increasing efficiency of hardware making it difficult to get reliable up-to date metrics as studies quickly go out of date. Electricity Intensity of Internet Data Transmission (Aslan, Mayer, Koomey, and France, 2017) argues for using 0.06kWh/GB for 2015 and suggests that the energy efficiency of these systems goes down by a factor loosely comparable to the increase in computational efficiency. This number is for wired networks. Wireless transmission has higher rates.</p>
-
 <p>Data center energy consumption analysis is typically conducted to by the facility operators to cut down their energy bill and maximize profits. This type of analysis is called power usage effectiveness (PUE). Whitehead et al. write “the industry has focused almost exclusively on energy efficiency as a proxy for sustainability. The metrics have instigated a change in behaviour for the industry to one with more concern for sustainability, however, ‘pollution shift’ cannot be accurately evaluated by them and tends to be considered by intuition.”</p>
-
 <p>It’s worth noting that energy consumption is only one aspect of an environmental impact assessment, because not all electricity emits the same amount of CO2. Determining CO2 emissions for networked systems is particularly challenging because it relies on understanding the energy mix of the power grid in the physical location of the server/datacenter. Environmental impact assessment of online advertising (Pärssinen, Kotila, Cuevas, Phansalkar, and Manner, 2018) claims to have developed a comprehensive assessment for ICT systems and proposes an 8 phase method, but in regards to CO2 emissions of networks, even they admit that the emissions factor is a source of uncertainty.</p>
-
 <p>There does not seem to be any studies that give specific energy comparisons between large data centers and standalone servers. A number of questions in this space remain unanswered (for me, not necessarily the industry), though I think they could be resolved with more research.</p>
 <ul>
   <li>What is the impact of geographic location and transmission distance on the energy consumption of data?</li>
@@ -52,7 +43,7 @@
     <li>To what extent does data from independent servers, cached by companies operating data centers, like Google, effect energy considerations?</li>
     <li>Additionally, data centers are designed to operate at near peak capacity, however a number of papers have mentioned that many data center machines run idle and are dramatically under utilized, which leads to significant energy wastes. How does this underutilization change the calculus regarding the impacts of data centers?</li>
   </ul>
-
 </div>
+<h5>Bibliography</h5>
 {% endblock %}
 
