@@ -261,10 +261,10 @@ def draw_sun_graph(surface, data, label, w, h):
     x_text1.draw(surface)
     tick1 = g.polyline(points=[(x_left+1, y_middle), (x_left+1, y_middle-15)], stroke_width=tick_width) 
     tick1.draw(surface)
-    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
-    x_text2.draw(surface)
-    tick2 = g.polyline(points=[(x_middle, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
-    tick2.draw(surface)
+    # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
+    # x_text2.draw(surface)
+    # tick2 = g.polyline(points=[(x_middle, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
+    # tick2.draw(surface)
     x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, (y_middle-15-5)], angle=0)
     x_text3.draw(surface)
     tick3 = g.polyline(points=[(x_right-1, y_middle), (x_right-1, y_middle-15)], stroke_width=tick_width) 
@@ -345,7 +345,7 @@ def main():
     # energyParam = "load voltage"
     # y_axis_min = 0
     # y_axis_max = 1
-    w1 = 800
+    w1 = 1000
     h1 = 90
     surface1 = g.Surface(width=w, height=h)
     surface2 = g.Surface(width=w, height=h)
