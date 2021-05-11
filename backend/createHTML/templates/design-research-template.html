@@ -1,7 +1,8 @@
 {% extends "base-template.html" %}
 {% block content %}
 <div class="content box" style="grid-row:unset;">
-  <h2>ENERGY CENTERED DESIGN </h2>
+  <h2>Design Research</h2>
+  <h4>Energy Centered Design</h4>
 
 <p>We are exploring the concept of energy-centered design that considers the energy impacts of interfaces 
   as well as the experience for the user. Energy centered design acknowledges the user isn’t a bounded individual, 
@@ -12,13 +13,14 @@
         <li>Using static page generation rather than a framework like wordpress that does more computation client side.</li>
           <li>Dithering and reducing the size of all assets hosted on the website using tools like ImageMagic.</li>
 </ul>
-<h2>SYSTEM</h2>
-<h4>Hardware design choices:</h4>
+<h4>System</h4>
+<h5>Hardware design choices:</h5>
 <ul>
   <li>Computer: Raspberry Pi 4. We began our explorations using the same single board computer used by LOW←TECH MAGAZINE's solar-powered server, an Olimex board. This board was promising because of its low power consumption, but required a backup power supply to gracefully shut down and restart. RaspberryPi 4s had just been released when we embarked on this research they deal more effectively with power outages.  </li>
   <li>Battery: Sealed Lead-Acid batteries </li>
   <li>Solar Panel: We are using a monocrystalline silicon panel. The embedded energy of monocrystalline silicon is among the highest compared to other types of panels, at approximately 6,000 MJ/m^2. The EPBT is also among the highest, at approximately 8 years, and the EROI, at 9.0, is among the lowest. Despite all this, the mono-Si panel has among the highest efficiency at roughly 14%. The high efficiency of mono-Si panels make them highly desirable for our purposes, as this allows us to use a single panel on a roof instead of installing an entire array to power the server.</li>
-  <h4>Software design choices:</h4>
+</ul>
+  <h5>Software design choices:</h5>
   <ul>
     <li>This website is a static site generated with Jinja templating.</li>
     <li>The server is an apache server.</li>

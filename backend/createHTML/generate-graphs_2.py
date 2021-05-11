@@ -279,11 +279,11 @@ def main():
     surface1 = g.Surface(width=w, height=h)
     surface2 = g.Surface(width=w, height=h)
     surface3 = g.Surface(width=w, height=h)
-    #surface4 = g.Surface(width=w, height=h)
+    surface4 = g.Surface(width=800, height=45)
     draw_graph(surface1, d, "battery percentage", w, h, 0, 1)
     draw_graph(surface2, d, "PV power L", w, h, 0, 40)
     draw_graph(surface3, d, "load voltage", w, h, 0, 17.5)
-     #draw_sun_graph(surface4, d, "PV voltage", w, h)
+    draw_sun_graph(surface4, d, "PV voltage", w, h)
 
 if __name__ == "__main__":
     main()
