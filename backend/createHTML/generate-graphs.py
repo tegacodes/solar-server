@@ -158,7 +158,7 @@ def draw_sun_graph(surface, data, label, w, h):
     #AXIS
     x_padding_left = 50
     x_padding_right = 50
-    y_padding_bottom = 5
+    y_padding_bottom = 10
     y_padding_top = 5
 
     #axisy = g.polyline(points=[(x_padding_left, y_padding_top), (x_padding_left, h-y_padding_bottom)], stroke_width=3, stroke=(0,0,0), fill=(0,0,0))
@@ -259,7 +259,7 @@ def draw_sun_graph(surface, data, label, w, h):
     #draw bottom ticks and labels
     x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, (y_middle-15-5)], angle=0)
     x_text1.draw(surface)
-    tick1 = g.polyline(points=[(x_left, y_middle), (x_left+1, y_middle-15)], stroke_width=tick_width) 
+    tick1 = g.polyline(points=[(x_left, y_middle), (x_left, y_middle-15)], stroke_width=tick_width) 
     tick1.draw(surface)
     # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     # x_text2.draw(surface)
