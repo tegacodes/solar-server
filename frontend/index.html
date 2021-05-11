@@ -1,93 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style-large.css" />
-    <title>Solar Powered Media</title>
-    <meta name="author" content=" Solar Powered Media" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Solar Powered Media" />
-    <meta name="twitter:description" content="A solar powered server at NYU" />
-    <meta name="twitter:image" content="images/full-images/logo.gif" />
-    <meta property="og:title" content="Solar Powered Media" />
-    <meta property="og:image" content="images/full-images/logo.gif" />
-    <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-    <link rel="icon" href="favicon.png" />
-    <style>
-          
-          
-          a:hover { color:  };
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style-large.css" />
+  <title>Solar Powered Media</title>
+  <meta name="author" content=" Solar Powered Media" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Solar Powered Media" />
+  <meta name="twitter:description" content="A solar powered server at NYU" />
+  <meta name="twitter:image" content="images/full-images/logo.gif" />
+  <meta property="og:title" content="Solar Powered Media" />
+  <meta property="og:image" content="images/full-images/logo.gif" />
+  <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link rel="icon" href="favicon.png" />
+  <style>
+    {
+      % if batteryPercentage>=30 %
+    }
 
-    </style>
-  </head>
-    <body>
-      <div class="container">
-        <!-- top -->
-        <div class="header menu">
-            <h1>Solar Powered Media</h1>
-        </div>
-        <div class="nav menu">
-            <nav>
-                <ul class="no-bullets">
-                    <li><a href="index.html">About</a></li>
-                    <li><a href="design-research.html">Design Research</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="outputs.html">Outputs</a></li>
-                    <li><a href="system-data.html">System data</a></li>
-                </ul>
-            </nav>
+      {
+      % else %
+    }
+
+    header h1 a {
+      color: black;
+    }
+
+    header {
+      color: black;
+    }
+
+      {
+      % endif %
+    }
+
+    a:hover {
+      color: {
+          {
+          bgColor
+        }
+      }
+    }
+
+    ;
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- top -->
+    <div class="header menu">
+      <h1><a href="index.html">Solar Powered Media</a></h1>
+    </div>
+    <nav role="navigation" class="nav-bar menu">
+      <div class="nav-container">
+        <nav>
+          <input type="checkbox" id="nav-check">
+          <div class="nav-btn">
+            <label for="nav-check">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+          </div>
+          <ul class="nav-list">
+            <li>
+              <a href="about.html">About</a>
+            </li>
+            <li>
+              <a href="design-research.html">Design Research</a>
+              <ul class="nav-dropdown">
+                <li>
+                  <a href="#">Energy Responsive Design</a>
+                </li>
+                <li>
+                  <a href="#">Literature Review</a>
+                </li>
+                <li>
+                  <a href="#">Technology</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="resources.html">Resources</a>
+              <ul class="nav-dropdown">
+                <li>
+                  <a href="#">Software</a>
+                </li>
+                <li>
+                  <a href="#">Hardware</a>
+                </li>
+                <li>
+                  <a href="#">Glossary</a>
+                </li>
+                <li>
+                  <a href="#">Bibliography</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="outputs.html">Outputs</a>
+            </li>
+            <li>
+              <a href="system-data.html">System data</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
+    
+    <div class="requests menu">
+      ### requests in the past hour · ### data transferred today
+    </div>
+    
+    <!-- side panel -->
+    <div class="panel">
+      
+      <div class="battery-status box">
+        
+          <h3>server battery status</h3>
+          <h1 class="stats-res desc">49.0%</h1>
+          
+          <h1 class="stats-res desc">Hi-res mode</h1>
+          <p class="stats-res desc">In hi-res mode the site shows detailed images and updates faster.</p>
+
+          
+
+          <p class="desc">Last updated
+            <span class="stats-mins">12:35 PM</span>
+          </p>
         </div>
         
-          <div class="requests menu">
-                    <div class="stats-requests">### requests in the past hour · ### data transferred today</div>
+        <div class="photo box" role="img" aria-label="Photo of Brooklyn, NY where the solar panel is located">
+          <p> 12:35 PM (TZ n/a)</p>
+        </div>
+        <div class="weather box">
+          <h3>this website is coming from</h3>
+          <h1>Brooklyn, USA</h1>
+          <div class="weather-flex">
+            <p class="stats-weather desc"><i class="fas fa-cloud-sun"></i>few clouds</p>
+            <p class="stats-temp desc"><i class="fas fa-temperature-high"></i>17.1°F</p>
+            <p class="stats-sunrise desc"><i class="fas fa-temperature-high"></i>05:42 AM</p>
+            <p class="stats-sunset desc"><i class="fas fa-temperature-high"></i>08:02 PM</p>
+          </div>
+          <p class="desc">Last updated
+            <span class="stats-mins">12:35 PM</span>
+          </p>
+        </div>
+        <div class="convert button box">
+          <p class="desc">convert to low res mode</p>
         </div>
         
-        <!-- side panel -->
-        <div class="panel">
-            
-            <div class="battery-status box">
-            
-                <h3>server battery status</h3>
-                <h1 class="stats-res">49.0%</h1>
-                
-                  <h1 class="stats-res">Hi-res mode</h1>
-                  <p class="stats-res-desc">In hi-res mode the site shows detailed images and updates faster.</p>
-                  
-                
-                
-                <p>Last updated
-                <span class="stats-mins">12:55 AM</span></p>
-            </div>
-            
-            <div class="photo box image" role="img" aria-label="Photo of Brooklyn, NY where the solar panel is located">
-                <p> 12:55 AM (TZ n/a)</p>
-            </div>
-            <div class="weather box">
-                <h3>this website is coming from</h3>
-                <h1>Brooklyn, USA</h1>
-                <div class ="weather-flex">
-                    <p class="stats-weather"><i class = "fas fa-cloud-sun"></i>few clouds</p>
-                    <p class="stats-temp"><i class = "fas fa-temperature-high"></i>11.3°F</p>
-                    <p class="stats-sunrise"><i class = "fas fa-temperature-high"></i>05:42 AM</p>
-                    <p class="stats-sunset"><i class = "fas fa-temperature-high"></i>08:02 PM</p>
-                </div>
-                <p>Last updated <div class="stats-mins">12:55 AM</div></p>
-            </div>
-            <div class="convert button box"><p>convert to low res mode</p></div>
-            
-        </div>
-        <!-- scrollable content -->
-        <section class="scrollable">
-            
+      </div>
+      <!-- scrollable content -->
+      <section class="scrollable">
+        
 
 <div class="sunchart box">
   <h3>sun chart</h3>
 </div>
 <div class="sunlight box">
   <h3>sunlight</h3>
+  <img src="images/PV voltage_graph.png" alt="Graph showing sunlight levels over the past 24 hours">
 </div>
 <div class="shadowchart box">
   <h3>shadow chart</h3>
@@ -124,12 +204,14 @@
       and <a href="https://alexnathanson.com/">Alex Nathanson’s</a> solar power art archive. 
     </p>
   <h4>Team</h4>
-      <p>Faculty leads: Tega Brain and Benedetta Piantella</p>
-      <p>Alex Nathanson, Keita Ohshiro, Alex Markova, JiYoung Moon, JeeYoon Hyun </p>
+      <p>Faculty: Tega Brain and Benedetta Piantella</p>
+      <p>Hardware and research: Alex Nathanson, JiYoung Moon </p>
+      <p>Design and development: JeeYoon Hyun, Alex Markova, Keita Ohshiro</p>
 </div>
 </div>
 
-        </section>
+      </section>
     </div>
-  </body>
+</body>
+
 </html>
