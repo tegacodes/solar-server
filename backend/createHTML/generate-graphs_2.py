@@ -60,7 +60,7 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max):
     x_padding_left = 50
     x_padding_right = 50
     y_padding_bottom = 50
-    y_padding_top = 20
+    y_padding_top = 5
 
     zero_y = remap(0, y_axis_min, y_axis_max, h-y_padding_bottom, y_padding_top)
 
@@ -153,6 +153,8 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max):
     surface.write_to_png(file_name)
 
 def draw_sun_graph(surface, data, label, w, h):
+    rect = g.rectangle(lx=0, ly=0, xy=(w,h), fill=(0,1,1), )
+    rect.draw(surface)
     #AXIS
     x_padding_left = 50
     x_padding_right = 50
@@ -299,7 +301,7 @@ def draw_sun_graph(surface, data, label, w, h):
     #now
     tick6 = g.polyline(points=[(x_now, y_middle), (x_now, (y_middle-t_tick_length-10))], stroke_width=tick_width) 
     tick6.draw(surface)
-    now_text = g.text("Time Now", fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_now, (y_middle-t_tick_length-16)])
+    now_text = g.text("Time Now", fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_now, (y_middle-t_tick_length-17)])
     now_text.draw(surface)
 
 
