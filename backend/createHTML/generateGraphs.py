@@ -137,7 +137,7 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max, units):
         #time stamp of datapoint in seconds
         seconds=t.hour * 3600 + t.minute * 60 + t.second
         total_seconds = 24*60*60
-        print("seconds:", seconds)
+        #print("seconds:", seconds)
         #print(val)
         dy = remap(valy, y_axis_min, y_axis_max, h - y_padding_bottom, y_padding_top)-2
         dx = remap(seconds, 0, total_seconds, x_padding_left, w-x_padding_right)
