@@ -148,8 +148,8 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max):
     # x_text = g.text("Time", fontfamily="Georgia",  fontsize=20, fill=(0,0,0), xy=[250, h-(y_padding_bottom/2)], angle=0)
     # x_text.draw(surface)
 
-    #file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
-    file_name = label+"_graph.png"
+    file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
+    #file_name = label+"_graph.png"
     surface.write_to_png(file_name)
 
 def draw_sun_graph(surface, data, label, w, h):
@@ -301,8 +301,8 @@ def draw_sun_graph(surface, data, label, w, h):
     now_text.draw(surface)
 
 
-    #file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
-    file_name = label+"_graph.png"
+    file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
+    #file_name = label+"_graph.png"
     surface.write_to_png(file_name)
 
 
