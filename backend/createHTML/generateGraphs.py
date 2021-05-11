@@ -211,7 +211,7 @@ def draw_sun_graph(surface, data, label, w, h):
     #AXIS
     x_padding_left = 50
     x_padding_right = 50
-    y_padding_bottom = -25
+    y_padding_bottom = -35
     y_padding_top = 0
 
     #axisy = g.polyline(points=[(x_padding_left, y_padding_top), (x_padding_left, h-y_padding_bottom)], stroke_width=3, stroke=(0,0,0), fill=(0,0,0))
@@ -330,7 +330,7 @@ def main():
     # y_axis_min = 0
     # y_axis_max = 1
     w1 = 800
-    h1 = 70
+    h1 = 60
     surface1 = g.Surface(width=w, height=h)
     surface2 = g.Surface(width=w, height=h)
     surface3 = g.Surface(width=w, height=h)
