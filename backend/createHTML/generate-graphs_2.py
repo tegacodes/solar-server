@@ -153,7 +153,7 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max):
     surface.write_to_png(file_name)
 
 def draw_sun_graph(surface, data, label, w, h):
-    rect = g.rectangle(lx=0, ly=0, xy=(w,h), fill=(0,1,1), )
+    rect = g.rectangle(lx=0, ly=0, xy=(w,h), fill=(0,1,1))
     rect.draw(surface)
     #AXIS
     x_padding_left = 50
@@ -344,7 +344,7 @@ def main():
     surface1 = g.Surface(width=w, height=h)
     surface2 = g.Surface(width=w, height=h)
     surface3 = g.Surface(width=w, height=h)
-    surface4 = g.Surface(width=800, height=90)
+    surface4 = g.Surface(width=800, height=90, bg_color=(1,1,1))
     draw_graph(surface1, d, "battery percentage", w, h, 0, 1)
     draw_graph(surface2, d, "PV power L", w, h, 0, 40)
     draw_graph(surface3, d, "load voltage", w, h, 0, 17.5)
