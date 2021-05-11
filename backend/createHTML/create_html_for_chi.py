@@ -56,16 +56,16 @@ def render_pages(_data, _weather):
         
         time = datetime.datetime.now()
         time = time.strftime("%I:%M %p")
-        try:
-            tz_url = "http://localhost/api/v1/chargecontroller.php?systemInfo=tz"
-            z = requests.get(tz_url) 
-            zone = z.text
-            print("ZONE", z.text)
-            zone = zone.replace('/', ' ')
-            print("ZONE", zone)
-        except Exception as e:
-            zone = "TZ n/a"
-            print("TZ na")
+        # try:
+        #     tz_url = "http://localhost/api/v1/chargecontroller.php?systemInfo=tz"
+        #     z = requests.get(tz_url) 
+        #     zone = z.text
+        #     print("ZONE", z.text)
+        #     zone = zone.replace('/', ' ')
+        #     print("ZONE", zone)
+        # except Exception as e:
+        zone = "TZ n/a"
+        # print("TZ na")
 
         # print("UTC TIME", datetime.datetime.utcnow())
         #would be nice to swap this out if the via script fails
