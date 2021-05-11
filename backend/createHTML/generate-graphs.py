@@ -229,22 +229,25 @@ def draw_sun_graph(surface, data, label, w, h):
     print("hours", len(av_hour))
 
 
-    #draw circles
+ #draw circles
     n=0
     limit = len(av_hour)-1
-    for i in range(0,23):
-        print("n", n)
+    for i in range(0,25):
+        
     #for index, line in enumerate(average_pv):
-        spacing = (w-(x_padding_left-x_padding_right))/24
+        spacing = (w-(x_padding_left+x_padding_right))/24
         x = spacing*i
+        print("circle_x", x)
         if(av_hour[n]==i):
             circle_r = average_pv[n]*0.4
+
             circle = g.circle(r=circle_r, xy=[x_padding_left+x, (h-(y_padding_bottom+y_padding_top))/2], stroke_width=3, fill=(0,0,0))
             circle.draw(surface)
             if(n<limit):
                 n=n+1
         else:
             print("nodata")
+        
         
     
     x_left = x_padding_left
@@ -254,15 +257,15 @@ def draw_sun_graph(surface, data, label, w, h):
     b_tick_length =15
     y_middle = (h-(y_padding_bottom+y_padding_top))/2
     #draw bottom ticks and labels
-    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, (y_middle-15+5)], angle=0)
+    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, (y_middle-15-5)], angle=0)
     x_text1.draw(surface)
     tick1 = g.polyline(points=[(x_left+1, y_middle), (x_left+1, y_middle-15)], stroke_width=tick_width) 
     tick1.draw(surface)
-    # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
-    # x_text2.draw(surface)
-    # tick2 = g.polyline(points=[(x_middle, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
-    # tick2.draw(surface)
-    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, (y_middle-15+5)], angle=0)
+    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
+    x_text2.draw(surface)
+    tick2 = g.polyline(points=[(x_middle, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
+    tick2.draw(surface)
+    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, (y_middle-15-5)], angle=0)
     x_text3.draw(surface)
     tick3 = g.polyline(points=[(x_right-1, y_middle), (x_right-1, y_middle-15)], stroke_width=tick_width) 
     tick3.draw(surface)
