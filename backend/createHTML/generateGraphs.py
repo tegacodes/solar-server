@@ -170,7 +170,7 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max, units):
         # y_text2.draw(surface)
         # y_text3 = g.text(str(y_axis_max), fontfamily="Arial",  fontsize=10, fill=(0,0,0), h_align="right", xy=[x_padding_left-5, y_padding_top], angle=0)
         # y_text3.draw(surface)
-    x_left = x_padding_left+2
+    x_left = x_padding_left+1
     x_middle = (w-(x_padding_left+x_padding_right))/2
     x_right = w-x_padding_right-2
     y_top = h-y_padding_bottom
