@@ -13,7 +13,7 @@ import generateGraphs
 from apachelogs import LogParser
 
 def apache_log_reader():
-        parser = LogParser("%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-$
+        parser = LogParser("%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"")
         count_hit = 0
         count_data = 0
         with open ('../../../var/log/apache2/access.log') as fp:
