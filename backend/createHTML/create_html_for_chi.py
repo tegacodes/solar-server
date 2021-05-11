@@ -8,6 +8,7 @@ import requests, json
 import json
 import csv
 import os
+import generate-graphs
 
 def read_csv():
     # filename = "../../charge-controller/data/tracerData2021-05-01.csv"
@@ -235,6 +236,7 @@ myIP = " "
 
 
 def main():
+    generate-graphs.main()
     energy_data = read_csv()
     try:
         local_weather = get_weather()
