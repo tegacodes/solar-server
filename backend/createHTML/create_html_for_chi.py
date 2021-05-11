@@ -22,7 +22,7 @@ def apache_log_reader():
                         count_data += entry.bytes_sent
         print('Hit Count: ', count_hit)
         print('Data Count: ', count_data)
-        return (count_hit, countdata)
+        return (count_hit, count_data)
 
 def read_csv():
     # filename = "../../charge-controller/data/tracerData2021-05-01.csv"
