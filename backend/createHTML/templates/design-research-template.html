@@ -1,7 +1,29 @@
 {% extends "base-template.html" %}
 {% block content %}
 <div class="content box" style="grid-row:unset;">
-  design research
+  <h2>ENERGY CENTERED DESIGN </h2>
+
+<p>We are exploring the concept of energy-centered design that considers the energy impacts of interfaces 
+  as well as the experience for the user. Energy centered design acknowledges the user isn’t a bounded individual, 
+  but entangled in an ecology. </p>
+  <ul>
+    <li>Designing a website that appears at different resolution depending on available energy as determined by the battery levels at the server.</li>
+      <li>Thinking about where the computation (and energy usage) happens. We didn’t use Javascript to create our visualizations as that would happen in the browser (and likely using fossil fuels). Our visualizations are generated server side using a python library called Gizeh as then we know that they are generated with solar energy.</li>
+        <li>Using static page generation rather than a framework like wordpress that does more computation client side.</li>
+          <li>Dithering and reducing the size of all assets hosted on the website using tools like ImageMagic.</li>
+</ul>
+<h2>SYSTEM</h2>
+<h4>Hardware design choices:</h4>
+<ul>
+  <li>Computer: Raspberry Pi 4. We began our explorations using the same single board computer used by LOW←TECH MAGAZINE's solar-powered server, an Olimex board. This board was promising because of its low power consumption, but required a backup power supply to gracefully shut down and restart. RaspberryPi 4s had just been released when we embarked on this research they deal more effectively with power outages.  </li>
+  <li>Battery: Sealed Lead-Acid batteries </li>
+  <li>Solar Panel: The solar panel in our recommended system is a monocrystalline silicon panel. The embedded energy of monocrystalline silicon is among the highest compared to other types of panels, at approximately 6,000 MJ/m^2. The EPBT is also among the highest, at approximately 8 years, and the EROI, at 9.0, is among the lowest. Despite all this, the mono-Si panel has among the highest efficiency at roughly 14%. The high efficiency of mono-Si panels make them highly desirable for our purposes, as this allows us to use a single panel on a roof instead of installing an entire array to power the server.</li>
+  <h4>Softeware design choices:</h4>
+  <ul>
+    <li>This website is a static site generated with Jinja templating.</li>
+    <li>The server is an apache server.</li>
+    <li>We decided not to use any Javascript on the frontend of this website and so all of our visualizations are generated server-side using python libraries such as MatPlotLib. Where possible, the generation of the visual assets on this site are done on the server rather than in the browser. We adopted this as an approach that fosters accountability for our design decisions. We know that the computational cycles required to generate our imagery are powered by solar energy rather than potentially powered as fossil energy in the browser. This design approach also minimizes the energy consumption for the user. </li>
+</ul>
 </div>
 {% endblock %}
 

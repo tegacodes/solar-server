@@ -109,7 +109,7 @@ def get_weather():
     lat = 40.68
     lon = -74
     # complete_url = base_url + "lon=" + lon+  "&lat=" +lat + "&appid=" + api_key 
-    complete_url = "http://api.openweathermap.org/data/2.5/weather?lon=40.68&lat=-74&appid=24df3e6ca023273cd426f67e7ac06ac9"
+    complete_url = "http://api.openweathermap.org/data/2.5/weather?lon=-74&lat=40.68&appid=24df3e6ca023273cd426f67e7ac06ac9"
     print(complete_url)
 
     response = requests.get(complete_url)
