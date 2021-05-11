@@ -283,7 +283,7 @@ def main():
     draw_graph(surface1, d, "battery percentage", w, h, 0, 1)
     draw_graph(surface2, d, "PV power L", w, h, 0, 40)
     draw_graph(surface3, d, "load voltage", w, h, 0, 17.5)
-    draw_sun_graph(surface4, d, "PV voltage", w, h)
+    draw_sun_graph(surface4, d, "PV voltage", 800, 45)
 
 if __name__ == "__main__":
     main()
