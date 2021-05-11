@@ -276,14 +276,14 @@ def draw_sun_graph(surface, data, label, w, h):
     print("sunset", sunset)
     print("sunrise", sunrise)
 
-    sunrise = datetime.datetime.strptime(sunrise,'%H:%M %p')
-    sr_seconds=sunrise.hour * 3600 + sunrise.minute * 60
+    sr = datetime.datetime.strptime(sunrise,'%H:%M %p')
+    sr_seconds=sr.hour * 3600 + sr.minute * 60
     total_seconds = 24*60*60
     print("sr_seconds:", sr_seconds)
     x_sunrise = remap(sr_seconds, 0, total_seconds, x_padding_left, w-x_padding_right)
 
-    sunset = datetime.datetime.strptime(sunset,'%H:%M %p')
-    ss_seconds=(sunset.hour+12) * 3600 + sunset.minute * 60
+    ss = datetime.datetime.strptime(sunset,'%H:%M %p')
+    ss_seconds=(ss.hour+12) * 3600 + ss.minute * 60
     print("ss_seconds:", ss_seconds)
     print("total_seconds", total_seconds)
     x_sunset = remap(ss_seconds, 0, total_seconds, x_padding_left, w-x_padding_right)
@@ -296,11 +296,11 @@ def draw_sun_graph(surface, data, label, w, h):
     tick4 = g.polyline(points=[(x_sunrise, y_middle), (x_sunrise, (y_middle-t_tick_length))], stroke_width=tick_width) 
     tick4.draw(surface)
 
-    sr_text = g.text("Sunrise", fontfamily="Arial",  fontsize=12,  fill=(0,0,0), h_align="center", xy=[x_sunrise, (y_middle-t_tick_length-8)])
+    sr_text = g.text("Sunrise:"+sunrise, fontfamily="Arial",  fontsize=12,  fill=(0,0,0), h_align="center", xy=[x_sunrise, (y_middle-t_tick_length-8)])
     sr_text.draw(surface)
     tick5 = g.polyline(points=[(x_sunset, y_middle), (x_sunset, (y_middle-t_tick_length))], stroke_width=tick_width) 
     tick5.draw(surface)
-    ss_text = g.text("Sunset", fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_sunset, (y_middle-t_tick_length-8)])
+    ss_text = g.text("Sunset:"+sunset, fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_sunset, (y_middle-t_tick_length-8)])
     ss_text.draw(surface)
     #now
     tick6 = g.polyline(points=[(x_now, y_middle), (x_now, (y_middle-t_tick_length-10))], stroke_width=tick_width) 
@@ -345,7 +345,7 @@ def main():
     # energyParam = "load voltage"
     # y_axis_min = 0
     # y_axis_max = 1
-    w1 = 1000
+    w1 = 800
     h1 = 90
     surface1 = g.Surface(width=w, height=h)
     surface2 = g.Surface(width=w, height=h)
