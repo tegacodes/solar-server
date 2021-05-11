@@ -1,4 +1,5 @@
 from collections import UserList
+from typing import Counter
 from jinja2 import Template
 from jinja2 import Environment, FileSystemLoader
 from pymodbus.client.sync import ModbusSerialClient as ModbusClient
@@ -9,6 +10,19 @@ import json
 import csv
 import os
 import generateGraphs
+from apachelogs import LogParser
+
+def apache_log_reader():
+        parser = LogParser("%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-$
+        count_hit = 0
+        count_data = 0
+        with open ('../../../var/log/apache2/access.log') as fp:
+                for entry in parser.parse_lines(fp):
+                        count_hit += 1
+                        count_data += entry.bytes_sent
+        print('Hit Count: ', count_hit)
+        print('Data Count: ', count_data)
+        return (count_hit, countdata)
 
 def read_csv():
     # filename = "../../charge-controller/data/tracerData2021-05-01.csv"
@@ -33,7 +47,7 @@ def read_csv():
 
 
 # def render_pages(_data, _weather, _server_data):
-def render_pages(_data, _weather):
+def render_pages(_data, _weather, _count_hit, _count_data):
     print("Battery Percentage:" + str(_data["battery percentage"]))
     pages = [
         ("index-template.html", "index.html"),
@@ -99,6 +113,8 @@ def render_pages(_data, _weather):
             zone=zone,
             leadImage=leadImage,
             mode=mode, 
+            hits=_count_hit, 
+            count_data=_count_data
             # servers=_server_data
         )
 
@@ -238,6 +254,8 @@ myIP = " "
 def main():
     generateGraphs.main()
     energy_data = read_csv()
+    
+    count_hit, count_data = apache_log_reader():
     try:
         local_weather = get_weather()
     except Exception as e:
@@ -254,7 +272,7 @@ def main():
 
 
 
-    render_pages(energy_data, local_weather)
+    render_pages(energy_data, local_weather, count_hit, count_data)
 
 
 
