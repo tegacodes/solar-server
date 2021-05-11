@@ -302,11 +302,11 @@ def draw_sun_graph(surface, data, label, w, h):
     tick4 = g.polyline(points=[(x_sunrise, y_middle), (x_sunrise, (y_middle-t_tick_length))], stroke_width=tick_width) 
     tick4.draw(surface)
 
-    sr_text = g.text("Sunrise:"+sunrise, fontfamily="Arial",  fontsize=12,  fill=(0,0,0), h_align="center", xy=[x_sunrise, (y_middle-t_tick_length-8)])
+    sr_text = g.text("Sunrise: "+sunrise, fontfamily="Arial",  fontsize=12,  fill=(0,0,0), h_align="center", xy=[x_sunrise, (y_middle-t_tick_length-8)])
     sr_text.draw(surface)
     tick5 = g.polyline(points=[(x_sunset, y_middle), (x_sunset, (y_middle-t_tick_length))], stroke_width=tick_width) 
     tick5.draw(surface)
-    ss_text = g.text("Sunset:"+sunset, fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_sunset, (y_middle-t_tick_length-8)])
+    ss_text = g.text("Sunset: "+sunset, fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_sunset, (y_middle-t_tick_length-8)])
     ss_text.draw(surface)
     #now
     tick6 = g.polyline(points=[(x_now, y_middle), (x_now, (y_middle-t_tick_length-10))], stroke_width=tick_width) 
