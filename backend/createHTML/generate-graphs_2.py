@@ -129,10 +129,10 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max):
     x_text1.draw(surface)
     tick1 = g.polyline(points=[(x_left, y_bot), (x_left, y_top)], stroke_width=3) 
     tick1.draw(surface)
-    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, y_bot+5], angle=0)
-    x_text2.draw(surface)
-    tick2 = g.polyline(points=[(x_middle, y_bot), (x_middle, y_top)], stroke_width=3) 
-    tick2.draw(surface)
+    # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, y_bot+5], angle=0)
+    # x_text2.draw(surface)
+    # tick2 = g.polyline(points=[(x_middle, y_bot), (x_middle, y_top)], stroke_width=3) 
+    # tick2.draw(surface)
     x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, y_bot+5], angle=0)
     x_text3.draw(surface)
     tick3 = g.polyline(points=[(x_right, y_bot), (x_right, y_top)], stroke_width=3) 
@@ -158,8 +158,8 @@ def draw_sun_graph(surface, data, label, w, h):
     #AXIS
     x_padding_left = 50
     x_padding_right = 50
-    y_padding_bottom = 30
-    y_padding_top = 20
+    y_padding_bottom = 5
+    y_padding_top = 5
 
     #axisy = g.polyline(points=[(x_padding_left, y_padding_top), (x_padding_left, h-y_padding_bottom)], stroke_width=3, stroke=(0,0,0), fill=(0,0,0))
     axisx = g.polyline(points=[(x_padding_left, (h-(y_padding_bottom+y_padding_top))/2), (w-x_padding_right, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=3, stroke=(0,0,0), fill=(0,0,0))
@@ -239,7 +239,7 @@ def draw_sun_graph(surface, data, label, w, h):
         x = spacing*i
         if(av_hour[n]==i):
             circle_r = average_pv[n]*0.4
-            circle = g.circle(r=circle_r, xy=[x+(circle_r/2), (h-(y_padding_bottom+y_padding_top))/2], stroke_width=3, fill=(0,0,0))
+            circle = g.circle(r=circle_r, xy=[x+circle_r, (h-(y_padding_bottom+y_padding_top))/2], stroke_width=3, fill=(0,0,0))
             circle.draw(surface)
             if(n<limit):
                 n=n+1
@@ -257,10 +257,10 @@ def draw_sun_graph(surface, data, label, w, h):
     x_text1.draw(surface)
     tick1 = g.polyline(points=[(x_left+1, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_left+1, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
     tick1.draw(surface)
-    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
-    x_text2.draw(surface)
-    tick2 = g.polyline(points=[(x_middle, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
-    tick2.draw(surface)
+    # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
+    # x_text2.draw(surface)
+    # tick2 = g.polyline(points=[(x_middle, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
+    # tick2.draw(surface)
     x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     x_text3.draw(surface)
     tick3 = g.polyline(points=[(x_right-1, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_right-1, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
@@ -341,14 +341,16 @@ def main():
     # energyParam = "load voltage"
     # y_axis_min = 0
     # y_axis_max = 1
+    w1 = 800
+    h1 = 90
     surface1 = g.Surface(width=w, height=h)
     surface2 = g.Surface(width=w, height=h)
     surface3 = g.Surface(width=w, height=h)
-    surface4 = g.Surface(width=800, height=90, bg_color=(1,1,1))
+    surface4 = g.Surface(width=w1, height=h1, bg_color=(1,1,1))
     draw_graph(surface1, d, "battery percentage", w, h, 0, 1)
     draw_graph(surface2, d, "PV power L", w, h, 0, 40)
     draw_graph(surface3, d, "load voltage", w, h, 0, 17.5)
-    draw_sun_graph(surface4, d, "PV voltage", 800, 150)
+    draw_sun_graph(surface4, d, "PV voltage", w1, h1)
 
 if __name__ == "__main__":
     main()
