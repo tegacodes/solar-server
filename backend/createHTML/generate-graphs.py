@@ -252,10 +252,11 @@ def draw_sun_graph(surface, data, label, w, h):
     x_right = w-x_padding_right
     tick_width = 2
     b_tick_length =15
+    y_middle = (h-(y_padding_bottom+y_padding_top))/2
     #draw bottom ticks and labels
     x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     x_text1.draw(surface)
-    tick1 = g.polyline(points=[(x_left+1, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_left+1, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
+    tick1 = g.polyline(points=[(x_left+1, y_middle), (x_left+1, y_middle-15)], stroke_width=tick_width) 
     tick1.draw(surface)
     # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     # x_text2.draw(surface)
@@ -263,7 +264,7 @@ def draw_sun_graph(surface, data, label, w, h):
     # tick2.draw(surface)
     x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     x_text3.draw(surface)
-    tick3 = g.polyline(points=[(x_right-1, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_right-1, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
+    tick3 = g.polyline(points=[(x_right-1, y_middle), (x_right-1, y_middle-15)], stroke_width=tick_width) 
     tick3.draw(surface)
 
     #sunrise, sunset, now
@@ -288,7 +289,7 @@ def draw_sun_graph(surface, data, label, w, h):
     now_seconds=(time_now.hour) * 3600 + time_now.minute * 60 + time_now.second
     x_now = remap(now_seconds, 0, total_seconds, x_padding_left, w-x_padding_right)
 
-    y_middle = (h-(y_padding_bottom+y_padding_top))/2
+    
     tick4 = g.polyline(points=[(x_sunrise, y_middle), (x_sunrise, (y_middle-t_tick_length))], stroke_width=tick_width) 
     tick4.draw(surface)
 
