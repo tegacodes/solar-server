@@ -94,6 +94,7 @@ def render_pages(_data, _weather):
             feelsLike=_weather["feels_like"],
             sunrise=_weather["sunrise"],
             sunset=_weather["sunset"],
+            description=_weather["description"],
             zone=zone,
             leadImage=leadImage,
             mode=mode, 

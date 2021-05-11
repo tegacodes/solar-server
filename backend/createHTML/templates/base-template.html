@@ -30,7 +30,7 @@
       <div class="container">
         <!-- top -->
         <div class="header menu">
-            <h1><a href="index.html">Solar Powered Media</a></h1>
+            <h1>Solar Powered Media</h1>
         </div>
         <div class="nav menu">
             <nav>
@@ -45,14 +45,7 @@
         </div>
         {% if batteryPercentage >= 40 %}
           <div class="requests menu">
-            <ul>
-                <li>
-                    <div class="stats-requests">###</div> requests in the past hour ·
-                </li>
-                <li>
-                    <div class="stats-data">###</div> data transferred today
-                </li>
-            </ul>
+                    <div class="stats-requests">### requests in the past hour · ### data transferred today</div>
         </div>
         {% else %}
         {% endif %}
@@ -67,11 +60,11 @@
                 <h1 class="stats-res">{{batteryPercentage}}%</h1>
                 {% if batteryPercentage >= 40 %}
                   <h1 class="stats-res">Hi-res mode</h1>
-                  <p class="stats-res-desc">The weather’s {{feelsLike}}. The site will show detailed images and update
-                    more faster.</p>
+                  <p class="stats-res-desc">In hi-res mode the site shows detailed images and updates faster.</p>
+                  
                 {% else %}
                   <h1 class="stats-res">Low-res mode</h1>
-                  <p class="stats-res-desc">The weather’s {{feelsLike}} and battery power is limited right now. The website will show less images, less data and update slower.</p>
+                  <p class="stats-res-desc">The weather’s {{description}} and battery power is limited right now. The website will show less images, less data and update slower.</p>
                 {% endif %}
                 
                 <p>Last updated
@@ -82,9 +75,8 @@
                 <p>{{city}} {{time}} ({{zone}})</p>
             </div>
             <div class="weather box">
-                <h3>brought to you by</h3>
-                <h1>{{city}}</h1>
-                <h2>{{country}}</h2>
+                <h3>this website is coming from</h3>
+                <h1>Brooklyn, USA</h1>
                 <div class ="weather-flex">
                     <p class="stats-weather"><i class = "fas fa-cloud-sun"></i>{{weather}}</p>
                     <p class="stats-temp"><i class = "fas fa-temperature-high"></i>{{temp}}°F</p>
