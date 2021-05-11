@@ -10,7 +10,7 @@ body, html {
 }
 
 a:link {
-text-decoration: none;
+text-decoration: underline;
 color:inherit;
 }
 
@@ -29,13 +29,23 @@ text-decoration: underline;
 color:inherit;
 }
 
-li {    
+.nav li {    
   display: inline;
 }
 
-li > *{
+.nav li > *{
   display: inline;
 }
+
+.nav a { 
+  text-decoration: none;
+}
+
+h1.header-menu{ 
+  text-decoration: none;
+}
+
+
 
 ul {
   padding: 0;
@@ -78,6 +88,10 @@ ul {
   background: black;
   color: white;
 }
+ul {
+  padding-left: 30px;
+}
+
 
 /* individual boxes grid position */
 
