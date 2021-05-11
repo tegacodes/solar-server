@@ -1,3 +1,21 @@
+/* :root {
+  --header-width: 25%;
+  --nav-width: 5%;
+  --content-width: 70%;
+  --vertical-padding: 15px;
+  --horizontal-padding: 15px;
+  --horizontal-text-padding: 30px;
+  --vertical-margin: 5px;
+  --horizontal-margin: 5px;
+  --b: rgb(0, 21, 138);
+  --text-size: 1.125rem;
+  --line-height: 1.4;
+  --bgcolor: #000;
+  --textcolor: white;
+  --text-background: rgb(230, 230, 230);
+  --serverDataLeft: 150px;
+} */
+
 /* global stuff */
 body, html {
   margin: 0;
@@ -8,7 +26,6 @@ body, html {
 * {
   box-sizing: border-box;
   font-family: Overpass Mono;
-  list-style-type: none;
 }
 
 a:link {
@@ -402,11 +419,18 @@ i.fas {
 }
 
 @media only screen and (max-width:768px) {
-  /* global stuff */
   body, html {
-    overflow: hidden;
+    overflow:scroll;
+  }
+  .container {
+    height: unset;
+    
   }
   /* nav */
+  .nav-container {
+    width: 100%;
+  }
+
   .nav-dropdown {
     position: unset;
     outline: unset;
@@ -437,7 +461,7 @@ i.fas {
   }
 
   .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0);
   }
 
   .nav > .nav-btn > label > span {
@@ -448,28 +472,14 @@ i.fas {
   }
 
   .nav > .nav-list {
-    position: absolute;
     display: block;
     width: 100%;
-    background-color: #333;
+    background-color: #000;
     height: 0px;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
     top: 50px;
     left: 0px;
-  }
-
-  .nav > .nav-list > a {
-    display: block;
-    width: 100%;
-  }
-
-  .nav > #nav-check:not(:checked) ~ .nav-list {
-    height: 0px;
-  }
-  .nav > #nav-check:checked ~ .nav-list {
-    height: calc(100vh - 50px);
-    overflow-y: auto;
   }
 
   nav ul {
