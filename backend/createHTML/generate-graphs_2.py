@@ -3,6 +3,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 import csv
 from json.decoder import JSONDecodeError
+import requests, json 
 
 
 def read_csv():
@@ -27,6 +28,25 @@ def read_csv():
     # line["load power"] = float(line["load power"])
     # line["battery percentage"] = float(line["battery percentage"])
     return alllines
+
+def get_weather():
+    complete_url = "http://api.openweathermap.org/data/2.5/weather?lon=-74&lat=40.68&appid=24df3e6ca023273cd426f67e7ac06ac9"
+    
+    print(complete_url)
+
+    response = requests.get(complete_url)
+    x = response.json()  
+    y = x["main"] 
+    current_temperature = y["temp"] 
+    current_humidiy = y["humidity"] 
+    z = x["weather"] 
+    weather_description = z[0]["description"] 
+
+    sunrise=datetime.datetime.fromtimestamp(x["sys"]["sunrise"])
+    sunset=datetime.datetime.fromtimestamp(x["sys"]["sunset"])
+    sunrise = sunrise.strftime("%I:%M %p")
+    sunset = sunset.strftime("%I:%M %p")
+    return (sunrise, sunset)
 
 def remap(n, start1, stop1, start2, stop2):
     return ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2
@@ -128,14 +148,15 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max):
     # x_text = g.text("Time", fontfamily="Georgia",  fontsize=20, fill=(0,0,0), xy=[250, h-(y_padding_bottom/2)], angle=0)
     # x_text.draw(surface)
 
-    file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
+    #file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
+    file_name = label+"_graph.png"
     surface.write_to_png(file_name)
 
 def draw_sun_graph(surface, data, label, w, h):
     #AXIS
     x_padding_left = 50
     x_padding_right = 50
-    y_padding_bottom = 20
+    y_padding_bottom = 30
     y_padding_top = 20
 
     #axisy = g.polyline(points=[(x_padding_left, y_padding_top), (x_padding_left, h-y_padding_bottom)], stroke_width=3, stroke=(0,0,0), fill=(0,0,0))
@@ -215,7 +236,8 @@ def draw_sun_graph(surface, data, label, w, h):
         spacing = (w-x_padding_left-x_padding_right)/24
         x = spacing*i
         if(av_hour[n]==i):
-            circle = g.circle(r=average_pv[n]*1.2, xy=[x, (h-(y_padding_bottom+y_padding_top))/2], stroke_width=3, fill=(0,0,0))
+            circle_r = average_pv[n]*0.6
+            circle = g.circle(r=circle_r, xy=[x+(circle_r/2), (h-(y_padding_bottom+y_padding_top))/2], stroke_width=3, fill=(0,0,0))
             circle.draw(surface)
             if(n<limit):
                 n=n+1
@@ -226,22 +248,61 @@ def draw_sun_graph(surface, data, label, w, h):
     x_left = x_padding_left
     x_middle = (w-(x_padding_left+x_padding_right))/2
     x_right = w-x_padding_right
-    #draw ticks and labels
-    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, 40+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
+    tick_width = 2
+    #draw bottom ticks and labels
+    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, 25+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     x_text1.draw(surface)
-    tick1 = g.polyline(points=[(x_padding_left, 35+(h-(y_padding_bottom+y_padding_top))/2), (x_left, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=3) 
+    tick1 = g.polyline(points=[(x_left+1, 20+(h-(y_padding_bottom+y_padding_top))/2), (x_left+1, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
     tick1.draw(surface)
-    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, 40+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
+    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, 25+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     x_text2.draw(surface)
-    tick2 = g.polyline(points=[(x_middle, 35+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=3) 
+    tick2 = g.polyline(points=[(x_middle, 20+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
     tick2.draw(surface)
-    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, 40+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
+    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, 25+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     x_text3.draw(surface)
-    tick3 = g.polyline(points=[(x_right, 35+(h-(y_padding_bottom+y_padding_top))/2), (x_right, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=3) 
+    tick3 = g.polyline(points=[(x_right-1, 20+(h-(y_padding_bottom+y_padding_top))/2), (x_right-1, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
     tick3.draw(surface)
 
+    #sunrise, sunset 
+    sunrise, sunset = get_weather()
+    print("sunset", sunset)
+    print("sunrise", sunrise)
 
-    file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
+    sunrise = datetime.datetime.strptime(sunrise,'%H:%M %p')
+    sr_seconds=sunrise.hour * 3600 + sunrise.minute * 60
+    total_seconds = 24*60*60
+    print("sr_seconds:", sr_seconds)
+    x_sunrise = remap(sr_seconds, 0, total_seconds, x_padding_left, w-x_padding_right)
+
+    sunset = datetime.datetime.strptime(sunset,'%H:%M %p')
+    ss_seconds=(sunset.hour+12) * 3600 + sunset.minute * 60
+    print("ss_seconds:", ss_seconds)
+    print("total_seconds", total_seconds)
+    x_sunset = remap(ss_seconds, 0, total_seconds, x_padding_left, w-x_padding_right)
+
+    time_now = datetime.datetime.now()
+    now_seconds=(time_now.hour) * 3600 + time_now.minute * 60 + time_now.second
+    x_now = remap(now_seconds, 0, total_seconds, x_padding_left, w-x_padding_right)
+
+    y_middle = (h-(y_padding_bottom+y_padding_top))/2
+    tick4 = g.polyline(points=[(x_sunrise, y_middle), (x_sunrise, (y_middle-25))], stroke_width=tick_width) 
+    tick4.draw(surface)
+
+    sr_text = g.text("Sunrise", fontfamily="Arial",  fontsize=12,  fill=(0,0,0), h_align="center", xy=[x_sunrise, (y_middle-35)])
+    sr_text.draw(surface)
+    tick5 = g.polyline(points=[(x_sunset, y_middle), (x_sunset, (y_middle-25))], stroke_width=tick_width) 
+    tick5.draw(surface)
+    ss_text = g.text("Sunset", fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_sunset, (y_middle-35)])
+    ss_text.draw(surface)
+    #now
+    tick6 = g.polyline(points=[(x_now, y_middle), (x_now, (y_middle-35))], stroke_width=tick_width) 
+    tick6.draw(surface)
+    now_text = g.text("Time Now", fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_now, (y_middle-45)])
+    now_text.draw(surface)
+
+
+    #file_name = "/home/pi/solar-server/frontend/images/"+label+"_graph.png"
+    file_name = label+"_graph.png"
     surface.write_to_png(file_name)
 
 
@@ -279,11 +340,11 @@ def main():
     surface1 = g.Surface(width=w, height=h)
     surface2 = g.Surface(width=w, height=h)
     surface3 = g.Surface(width=w, height=h)
-    surface4 = g.Surface(width=800, height=45)
+    surface4 = g.Surface(width=800, height=90)
     draw_graph(surface1, d, "battery percentage", w, h, 0, 1)
     draw_graph(surface2, d, "PV power L", w, h, 0, 40)
     draw_graph(surface3, d, "load voltage", w, h, 0, 17.5)
-    draw_sun_graph(surface4, d, "PV voltage", 800, 45)
+    draw_sun_graph(surface4, d, "PV voltage", 800, 150)
 
 if __name__ == "__main__":
     main()
