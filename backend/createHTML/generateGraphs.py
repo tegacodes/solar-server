@@ -81,27 +81,27 @@ def sunrise_sunset(surface, x_padding_left, x_padding_right, w, t, y, tick_width
     tick4 = g.polyline(points=[(x_sunrise, y), (x_sunrise, (y-t_tick_length))], stroke_width=tick_width) 
     tick4.draw(surface)
 
-    sr_text = g.text("Sunrise: "+str(sunrise), fontfamily="Arial",  fontsize=12,  fill=(0,0,0), h_align="center", xy=[x_sunrise, (y-t_tick_length-8)])
+    sr_text = g.text("Sunrise: "+str(sunrise), fontfamily="Arial",  fontsize=15,  fill=(0,0,0), h_align="center", xy=[x_sunrise, (y-t_tick_length-8)])
     sr_text.draw(surface)
     tick5 = g.polyline(points=[(x_sunset, y), (x_sunset, (y-t_tick_length))], stroke_width=tick_width) 
     tick5.draw(surface)
-    ss_text = g.text("Sunset: "+str(sunset), fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_sunset, (y-t_tick_length-8)])
+    ss_text = g.text("Sunset: "+str(sunset), fontfamily="Arial",  fontsize=15, h_align="center", xy=[x_sunset, (y-t_tick_length-8)])
     ss_text.draw(surface)
     #time now
     tick6 = g.polyline(points=[(x_now, y), (x_now, (y-t_tick_length-now_length))], stroke_width=tick_width) 
     tick6.draw(surface)
     c6 = g.circle(r=5, xy=[x_now, (y-t_tick_length-now_length)], fill=(0,0,0))
     c6.draw(surface)
-    now_text = g.text("Time Now", fontfamily="Arial",  fontsize=12, h_align="center", xy=[x_now, (y-t_tick_length-now_length-15)])
+    now_text = g.text("Time Now", fontfamily="Arial",  fontsize=15, h_align="center", xy=[x_now, (y-t_tick_length-now_length-15)])
     now_text.draw(surface)
 
     line6 = g.polyline(points=[(x_now, y-4), (w-x_padding_right, y-4)], stroke_width=8) 
     line6.draw(surface)
 
 def y_axis_text(surface, w, h, units, y_axis_min, y_axis_max, x_padding_right, y_padding_top, y_padding_bottom):
-    min_text = g.text(str(y_axis_min) + units, fontfamily="Arial",  fontsize=12, h_align="left", xy=[w-x_padding_right+3, (h-y_padding_bottom)])
+    min_text = g.text(str(y_axis_min) + units, fontfamily="Arial",  fontsize=15, h_align="left", xy=[w-x_padding_right+3, (h-y_padding_bottom)])
     min_text.draw(surface)
-    max_text = g.text(str(y_axis_max) + units, fontfamily="Arial",  fontsize=12, h_align="left", xy=[w-x_padding_right+3,(y_padding_top)])
+    max_text = g.text(str(y_axis_max) + units, fontfamily="Arial",  fontsize=15, h_align="left", xy=[w-x_padding_right+3,(y_padding_top)])
     max_text.draw(surface)
 
 def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max, units):
@@ -178,15 +178,15 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max, units):
     y_middle = (h-(y_padding_bottom+y_padding_top))/2
 
     #draw ticks and labels
-    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, y_bot+10])
+    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=15 , fill=(0,0,0), h_align="center", xy=[x_left, y_bot+10])
     x_text1.draw(surface)
     tick1 = g.polyline(points=[(x_left-1, y_bot), (x_left-1, y_top)], stroke_width=2) 
     tick1.draw(surface)
-    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, y_bot+10])
+    x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=15 , fill=(0,0,0), h_align="center", xy=[x_middle, y_bot+10])
     x_text2.draw(surface)
     tick2 = g.polyline(points=[(x_middle, y_bot), (x_middle, y_top)], stroke_width=2) 
     tick2.draw(surface)
-    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, y_bot+10])
+    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=15 , fill=(0,0,0), h_align="center", xy=[x_right, y_bot+10])
     x_text3.draw(surface)
     tick3 = g.polyline(points=[(x_right+1, y_bot), (x_right+1, y_top)], stroke_width=2) 
     tick3.draw(surface)
@@ -297,15 +297,15 @@ def draw_sun_graph(surface, data, label, w, h):
     b_tick_length =15
     y_middle = (h-(y_padding_bottom+y_padding_top))/2
     #draw bottom ticks and labels
-    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_left, (y_middle-15-5)], angle=0)
+    x_text1 = g.text("00.00", fontfamily="Arial",  fontsize=15 , fill=(0,0,0), h_align="center", xy=[x_left, (y_middle-15-5)], angle=0)
     x_text1.draw(surface)
     tick1 = g.polyline(points=[(x_left+1, y_middle), (x_left+1, y_middle-15)], stroke_width=tick_width) 
     tick1.draw(surface)
-    # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
+    # x_text2 = g.text("12.00", fontfamily="Arial",  fontsize=15 , fill=(0,0,0), h_align="center", xy=[x_middle, b_tick_length+5+(h-(y_padding_bottom+y_padding_top))/2], angle=0)
     # x_text2.draw(surface)
     # tick2 = g.polyline(points=[(x_middle, b_tick_length+(h-(y_padding_bottom+y_padding_top))/2), (x_middle, (h-(y_padding_bottom+y_padding_top))/2)], stroke_width=tick_width) 
     # tick2.draw(surface)
-    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=12 , fill=(0,0,0), h_align="center", xy=[x_right, (y_middle-15-5)], angle=0)
+    x_text3 = g.text("24.00", fontfamily="Arial",  fontsize=15 , fill=(0,0,0), h_align="center", xy=[x_right, (y_middle-15-5)], angle=0)
     x_text3.draw(surface)
     tick3 = g.polyline(points=[(x_right-1, y_middle), (x_right-1, y_middle-15)], stroke_width=tick_width) 
     tick3.draw(surface)

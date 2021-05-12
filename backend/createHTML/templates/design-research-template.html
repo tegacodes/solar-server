@@ -6,12 +6,13 @@
 
 <p>We are exploring the concept of energy-centered design that considers the energy impacts of interfaces 
   as well as the experience for the user. Energy centered design acknowledges the user isn’t a bounded individual, 
-  but entangled in an ecology. </p>
+  but entangled in an ecology. Some of the techniques we have implemented in this project include:</p>
   <ul>
-    <li>Designing a website that appears at different resolution depending on available energy as determined by the battery levels at the server.</li>
-      <li>Thinking about where the computation (and energy usage) happens. We didn’t use Javascript to create our visualizations as that would happen in the browser (and likely using fossil fuels). Our visualizations are generated server side using a python library called Gizeh as then we know that they are generated with solar energy.</li>
-        <li>Using static page generation rather than a framework like wordpress that does more computation client side.</li>
-          <li>Dithering and reducing the size of all assets hosted on the website using tools like ImageMagic.</li>
+    <li>Design of a website that appears at different resolutions depending on available energy as determined by the battery levels at the server.</li>
+    <li>Consideration of where the computation (and energy usage) happens in the user experience. We didn’t use Javascript on the frontend nor to 
+        create the visualizations. Javascript runs in the browser and is therefore happens at a cost to the user and is likely powered by fossil fuels. The visualizations on this website are generated server side using a python library called <a href="https://pypi.org/project/gizeh/">Gizeh.</a> In this way we know that the visuals are generated with solar energy.</li>
+    <li>Use of a static site and static site generator rather than a framework like wordpress that does more computation client side.</li>
+    <li>Reducing the size of all assets hosted on the website through use of dithering and tools like ImageMagic.</li>
 </ul>
 <h4 id ="Technology">Technology</h4>
 <h5>Hardware design choices:</h5>
