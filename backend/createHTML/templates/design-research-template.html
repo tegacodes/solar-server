@@ -4,15 +4,20 @@
   <h2>Design Research</h2>
   <h4 id ="Energy-centered-design">Energy Centered Design</h4>
 
-<p>We are exploring the concept of energy-centered design that considers the energy impacts of interfaces 
-  as well as the experience for the user. Energy-centered design acknowledges the user isn’t a bounded individual, 
-  but is entangled in an ecology. Some of the techniques we have implemented in this project include:</p>
+<p>We are exploring the concept of energy-centered design that considers the energetic and 
+  environmental effects of interfaces. Energy-centered design acknowledges the user 
+  isn’t a bounded individual but rather, is entangled in and dependent on a florishing environment. This 
+  recognition of the user's ecology, demands a radical reframing of user-centered design, where the 
+  condition of the user's environment must also be considered in the design process. What do interfaces look like when they are 
+  designed to acknowledge that the digital is material? </p>
+  
+  <p>This website begins to explore this question and we have implemented to following design strategies to do so:</p>
   <ul>
-    <li>The design of this website that appears at different resolutions depending on environmental conditions that manifest as the amount of energy stored in the battery of the server.</li>
-    <li>Consideration of where the computation (and energy use) happens in the user experience. For example, we didn’t use Javascript on the frontend nor to 
-        create the visualizations. Javascript runs in the browser and is therefore happens at a cost to the user and is likely powered by fossil fuels. The visualizations on this website are generated 
-        server-side using a python library called <a href="https://pypi.org/project/gizeh/">Gizeh.</a> In this way we know that the visuals are generated with solar energy.</li>
-    <li>Use of a static site and static site generator rather than a framework like wordpress that does more computation client side.</li>
+    <li>The design of this website that appears at different resolutions depending on environmental conditions at the server. Specificaly, when the amount of energy stored in the battery of the server is low (perhaps because of weather or season), the website appears in low resolution mode.</li>
+    <li>Careful consideration of where the computation (and energy use) happens in the user experience. For example, we didn’t use Javascript on the frontend nor to 
+        create the visualizations. Javascript runs in the browser and therefore happens at a cost to the user rather than the website host. Thus it is also likely to be powered by fossil fuels. The visualizations on this website are generated 
+        server-side using a python library called <a href="https://pypi.org/project/gizeh/">Gizeh.</a> In this way we know that the visuals are generated with the solar energy we are producing.</li>
+    <li>Use of a static site and static site generator rather than a framework like wordpress that does more computation on the client side.</li>
     <li>Reduction of the size of all assets hosted on the website through use of dithering and tools like ImageMagic.</li>
 </ul>
 <h4 id ="Technology">Technology</h4>
