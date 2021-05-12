@@ -20,13 +20,7 @@
     crossorigin="anonymous" />
   <link rel="icon" href="favicon.png" />
   <style>
-    {
-      % if batteryPercentage>=30 %
-    }
-
-      {
-      % else %
-    }
+    
 
     header h1 a {
       color: black;
@@ -36,9 +30,7 @@
       color: black;
     }
 
-      {
-      % endif %
-    }
+    
 
     a:hover {
       color: {
@@ -77,16 +69,16 @@
               <a href="design-research.html">Design Research</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Energy-centered design</a>
+                  <a href="design-research.html#Energy-centered-design">Energy-centered design</a>
                 </li>
                 <li>
-                  <a href="#">Technology</a>
+                  <a href="design-research.html#Technology">Technology</a>
                 </li>
                 <li>
-                  <a href="#">Literature review</a>
+                  <a href="design-research.html#Literature-review">Literature review</a>
                 </li>
                 <li>
-                  <a href="#">Bibliography</a>
+                  <a href="design-research.html#Bibliography">Bibliography</a>
                 </li>
               </ul>
             </li>
@@ -94,13 +86,13 @@
               <a href="resources.html">Resources</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Software</a>
+                  <a href="resources.html#Software">Software</a>
                 </li>
                 <li>
-                  <a href="#">Hardware</a>
+                  <a href="resources.html#Hardware">Hardware</a>
                 </li>
                 <li>
-                  <a href="#">Glossary</a>
+                  <a href="resources.html#Glossary">Glossary</a>
                 </li>
               </ul>
             </li>
@@ -115,15 +107,12 @@
       </div>
     </nav>
     
-    <div class="requests menu">
-      ### requests in the past hour · ### data transferred today
-    </div>
     
     <!-- side panel -->
     <div class="panel">
       
-      <div class="battery-status box">
-        
+        <div class="battery-status box" style="height: unset;">
+          
           <h3>server battery status</h3>
           <h1 class="stats-res desc">49.0%</h1>
           
@@ -133,24 +122,24 @@
           
 
           <p class="desc">Last updated
-            <span class="stats-mins">03:28 PM</span>
+            <span class="stats-mins">08:43 PM</span>
           </p>
         </div>
         
         <div class="photo box" role="img" aria-label="Photo of Brooklyn, NY where the solar panel is located">
-          <p> 03:28 PM (TZ n/a)</p>
+          <p> 08:43 PM UTC-4</p>
         </div>
         <div class="weather box">
           <h3>this website is coming from</h3>
           <h1>Brooklyn, USA</h1>
           <div class="weather-flex">
-            <p class="stats-weather desc"><i class="fas fa-cloud-sun"></i>broken clouds</p>
-            <p class="stats-temp desc"><i class="fas fa-temperature-high"></i>18.5°F</p>
+            <p class="stats-weather desc"><i class="fas fa-cloud-sun"></i>overcast clouds</p>
+            <p class="stats-temp desc"><i class="fas fa-temperature-high"></i>14.8°F</p>
             <p class="stats-sunrise desc"><i class="fas fa-temperature-high"></i>05:42 AM</p>
             <p class="stats-sunset desc"><i class="fas fa-temperature-high"></i>08:02 PM</p>
           </div>
           <p class="desc">Last updated
-            <span class="stats-mins">03:28 PM</span>
+            <span class="stats-mins">08:43 PM</span>
           </p>
         </div>
         <div class="convert button box">
@@ -165,23 +154,24 @@
   <h2>Resources</h2>
   <h4>Software</h4>
   <ul>
-    <li>Code is open sourced in <a href="https://github.com/tegacodes/solar-server">this repository.</a></li>
+    <li>Code is open sourced in <a href="https://github.com/tegacodes/solar-server">this repository</a>.</li>
     </ul>
    
    <h4>Hardware </h4>
    <ul>
-    <li>Hardware documentation to be published soon.</li>
+    <li>Hardware detailed how-to documentation - <a href="https://docs.google.com/document/d/1hdcTf9xUmsjRPd3waJEkQf1Bjive8Z6RmyWv_p5n8Is/edit#">LINK</a></li>
     </ul>
    <h4>Glossary</h4>
    <ul>
-    <li>Photovoltaic (PV): A PV panel refers to a solar panel, and a PV system may consist of the panel and a number of other electrical components, often referred to as BOS components.</li>
-      <li>Balance of system (BOS) components: Supporting hardware for a PV system, apart from the panel itself. This can include wiring, switches, support racks, inverters, and other components.</li>
-      <li>Life-cycle analysis (LCA): An assessment of the cumulative environmental impacts of a product, from the beginning of its production all the way to the end of its use.</li>
-      <li>Embedded/Embodied Energy: The total energy expended in the manufacturing of a product.</li>
-      <li>Energy Payback Time (EPBT): The time taken for an energy source to recoup its embedded energy. After EPBT, the energy gain of the product is net positive.</li>
-      <li>Energy return on investment (EROI): The ratio of the total energy gain over an energy source’s full life cycle to its embodied energy.</li>
-      <li>Grid-tied vs. off-grid: A grid-tied PV system works in tandem with the electricity grid, often involving a deal in which the utility company buys excess power from the user. An off-grid PV system is self-contained, consisting of only the solar hardware and the load that it is powering.</li>
-      <li>Crystalline silicon technology: Monocrystalline silicon (mono-Si) panels are made by slicing whole bars of silicon into wafers, while polycrystalline silicon (poly-Si) panels are made by melting together multiple crystals of silicon to form wafers. Mono-Si panels offer higher efficiency (allowing for smaller form factor), but with higher upfront cost and longer EPBT. Poly-Si panels are less efficient but also cost less up front and pay back sooner.</li>
+    <li><b><i>Photovoltaic (PV):</i></b>  A PV panel refers to a solar panel, and a PV system may consist of the panel and a number of other electrical components, often referred to as BOS components.</li>
+      <li><b><i>Balance of system (BOS) components:</i></b> Supporting hardware for a PV system, apart from the panel itself. This can include wiring, switches, support racks, inverters, and other components.</li>
+      <li><b><i>Life-cycle analysis (LCA):</i></b> An assessment of the cumulative environmental impacts of a product, from the beginning of its production all the way to the end of its use.</li>
+      <li><b><i>Embedded/Embodied Energy:</i></b> The total energy expended in the manufacturing of a product.</li>
+      <li><b><i>Energy Payback Time (EPBT):</i></b> The time taken for an energy source to recoup its embedded energy. After EPBT, the energy gain of the product is net positive.</li>
+      <li><b><i>Energy return on investment (EROI):</i></b> The ratio of the total energy gain over an energy source’s full life cycle to its embodied energy.</li>
+      <li><b><i>Grid-tied vs. off-grid:</i></b>  A grid-tied PV system works in tandem with the electricity grid, often involving a deal in which the utility company buys excess power from the user. An off-grid PV system is self-contained, consisting of only the solar hardware and the load that it is powering.</li>
+      <li><b><i>Crystalline silicon technology:</i></b> Monocrystalline silicon (mono-Si) panels are made by slicing whole bars of silicon into wafers, while polycrystalline silicon (poly-Si) panels are made by melting together multiple crystals of silicon to form wafers. Mono-Si panels offer higher efficiency (allowing for smaller form factor), but with higher upfront cost and longer EPBT. Poly-Si panels are less efficient but also cost less up front and pay back sooner.</li>
+      <li><b><i>Maximum Power Point Tracking (MPPT):</i></b> MPPT charge controllers are some of the most efficient controllers on the market (producing efficiency ratings of 90% or higher) and are specifically designed to harness the full power from the solar panels to charge the batteries most effectively. For example, if it becomes cloudy, a MPPT charge controller will decrease the amount of current drawn in order to maintain a desirable voltage at the output, viceversa when it becomes sunny again, the MPPT controller will allow more current from the solar panel once again. MPPT charge controllers also limit their output to ensure batteries don’t get overcharged as they will monitor and adjust their input accordingly, therefore extending the life of the battery.</li>
     </ul>
   
 

@@ -21,11 +21,23 @@ body, html {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 * {
   box-sizing: border-box;
   font-family: Overpass Mono;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  display:block;
+  margin:auto;
+}
+
+#sunchart-img {
+  margin-top: 42px;
 }
 
 a:link {
@@ -226,7 +238,7 @@ ul li ul li {
   grid-row: 7/10;
   /* height: 24vh; */
   padding: 0;
-  background-image: url('https://images.unsplash.com/photo-1542816932-26c9d1a2d5e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80');
+  background-image: url('images/bklyn_dithered.jpeg');
   background-size: cover;
 }
 
@@ -282,13 +294,11 @@ ul li ul li {
 .sunlight {
   grid-row: 1 / 2;
   grid-column: 3 / 7;
-  height: 10vh;
 }
 
 .shadowchart {
   grid-row: 2 / 7;
   grid-column: 3 / 6;
-  height: 20vh;
 }
 
 .seedetails {
@@ -297,7 +307,6 @@ ul li ul li {
   display: flex;
   justify-content:flex-end;
   flex-direction: column;
-  height: 20vh;
 }
 
 .content {
@@ -312,6 +321,14 @@ ul li ul li {
 
 
 /* typo stuff */
+.scrollable h3 {
+  /* position: absolute; */
+}
+
+.content ul li {
+  padding-bottom: 20px;
+}
+
 p {
   font-size: 1rem;
 }
@@ -340,7 +357,11 @@ h3 {
 }
 
 h4 {
+  font-size: 1.2rem;
+}
 
+h5 {
+  font-size: 1rem;
 }
 
 .button p {
@@ -358,8 +379,6 @@ h4 {
 .content > p {
   margin-bottom: 8vh;
 }
-
-
 
 p.desc{
   font-size: 0.8rem;

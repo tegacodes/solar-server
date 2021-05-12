@@ -20,13 +20,7 @@
     crossorigin="anonymous" />
   <link rel="icon" href="favicon.png" />
   <style>
-    {
-      % if batteryPercentage>=30 %
-    }
-
-      {
-      % else %
-    }
+    
 
     header h1 a {
       color: black;
@@ -36,9 +30,7 @@
       color: black;
     }
 
-      {
-      % endif %
-    }
+    
 
     a:hover {
       color: {
@@ -77,16 +69,16 @@
               <a href="design-research.html">Design Research</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Energy-centered design</a>
+                  <a href="design-research.html#Energy-centered-design">Energy-centered design</a>
                 </li>
                 <li>
-                  <a href="#">Technology</a>
+                  <a href="design-research.html#Technology">Technology</a>
                 </li>
                 <li>
-                  <a href="#">Literature review</a>
+                  <a href="design-research.html#Literature-review">Literature review</a>
                 </li>
                 <li>
-                  <a href="#">Bibliography</a>
+                  <a href="design-research.html#Bibliography">Bibliography</a>
                 </li>
               </ul>
             </li>
@@ -94,13 +86,13 @@
               <a href="resources.html">Resources</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Software</a>
+                  <a href="resources.html#Software">Software</a>
                 </li>
                 <li>
-                  <a href="#">Hardware</a>
+                  <a href="resources.html#Hardware">Hardware</a>
                 </li>
                 <li>
-                  <a href="#">Glossary</a>
+                  <a href="resources.html#Glossary">Glossary</a>
                 </li>
               </ul>
             </li>
@@ -115,15 +107,12 @@
       </div>
     </nav>
     
-    <div class="requests menu">
-      ### requests in the past hour · ### data transferred today
-    </div>
     
     <!-- side panel -->
     <div class="panel">
       
-      <div class="battery-status box">
-        
+        <div class="battery-status box" style="height: unset;">
+          
           <h3>server battery status</h3>
           <h1 class="stats-res desc">49.0%</h1>
           
@@ -133,24 +122,24 @@
           
 
           <p class="desc">Last updated
-            <span class="stats-mins">03:28 PM</span>
+            <span class="stats-mins">08:43 PM</span>
           </p>
         </div>
         
         <div class="photo box" role="img" aria-label="Photo of Brooklyn, NY where the solar panel is located">
-          <p> 03:28 PM (TZ n/a)</p>
+          <p> 08:43 PM UTC-4</p>
         </div>
         <div class="weather box">
           <h3>this website is coming from</h3>
           <h1>Brooklyn, USA</h1>
           <div class="weather-flex">
-            <p class="stats-weather desc"><i class="fas fa-cloud-sun"></i>broken clouds</p>
-            <p class="stats-temp desc"><i class="fas fa-temperature-high"></i>18.5°F</p>
+            <p class="stats-weather desc"><i class="fas fa-cloud-sun"></i>overcast clouds</p>
+            <p class="stats-temp desc"><i class="fas fa-temperature-high"></i>14.8°F</p>
             <p class="stats-sunrise desc"><i class="fas fa-temperature-high"></i>05:42 AM</p>
             <p class="stats-sunset desc"><i class="fas fa-temperature-high"></i>08:02 PM</p>
           </div>
           <p class="desc">Last updated
-            <span class="stats-mins">03:28 PM</span>
+            <span class="stats-mins">08:43 PM</span>
           </p>
         </div>
         <div class="convert button box">
@@ -164,14 +153,15 @@
 
 <div class="sunchart box">
   <h3>sun chart</h3>
+  <img src="images/sunchart.png" alt="Graph showing current time and azimuth of the Sun" class="responsive">
 </div>
 <div class="sunlight box">
   <h3>sunlight</h3>
-
   <img src="images/PV voltage_graph.png" alt="Graph showing sunlight levels over the past 24 hours" class="responsive">
 </div>
 <div class="shadowchart box">
   <h3>shadow chart</h3>
+  <img src="images/shadowchart.png" alt="Graph showing current length of shadow" class="responsive">
 </div>
 <div class="seedetails button box"><a href="system-data.html">see detailed stats</a></div>
 
@@ -201,13 +191,13 @@
     less energy is available. A raw text version of the site is served when the battery is low, and it may go offline from time to time.</p>
 
     <p>Inspiration and precedents for this project include Low-tech Magazine’s <a href="https://solar.lowtechmagazine.com/">solar-powered website</a>, that drastically reduces the 
-      energy required for users to access the magazine content, artist <a href="http://www.janavirgin.com/"></a>Joana Moll's work</a> exploring the energy footprint of the Internet 
+      energy required for users to access the magazine content, artist <a href="http://www.janavirgin.com/">Joana Moll's work</a> exploring the energy footprint of the Internet 
       and <a href="https://alexnathanson.com/">Alex Nathanson’s</a> solar power art archive. 
     </p>
   <h4>Team</h4>
       <p>Faculty: Tega Brain and Benedetta Piantella</p>
-      <p>Hardware and research: Alex Nathanson, JiYoung Moon </p>
-      <p>Design and development: JeeYoon Hyun, Alex Markova, Keita Ohshiro</p>
+      <p>Research & Systems Design: Alex Nathanson, Keita Ohshiro </p>
+      <p>Web Design and Development: Jeeyoon Hyun, Alex Markova & JiYoung Moon</p>
 </div>
 </div>
 
