@@ -57,6 +57,7 @@ def render_pages(_data, _weather, _count_hit, _count_data):
         ("resources-template.html", "resources.html"),
         ("outputs-template.html", "outputs.html"),
         ("system-data-template.html", "system-data.html"),
+        ("lowres-template.html", "lowres.html"),
     ]
 
     for template_filename, output_filename in pages:
