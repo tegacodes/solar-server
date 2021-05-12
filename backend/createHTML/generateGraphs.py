@@ -147,7 +147,7 @@ def draw_graph(surface, data, label, w, h, y_axis_min, y_axis_max, units):
 
         #DRAW DATA LINE
         if(index != 0):
-            fit_line = g.polyline(points=[(previous_x, previous_y), (dx, dy)], stroke_width=3, stroke=(0,0,0), fill=(0,0,0))
+            fit_line = g.polyline(points=[(previous_x, previous_y), (dx, dy)], stroke_width=3, stroke=(0,0,1))
             fit_line.draw(surface)
         previous_x = dx
         previous_y = dy
@@ -280,9 +280,9 @@ def draw_sun_graph(surface, data, label, w, h):
         x = spacing*i
         print("circle_x", x)
         if(av_hour[n]==i):
-            circle_r = average_pv[n]*0.4
+            circle_r = average_pv[n]*0.5
 
-            circle = g.circle(r=circle_r, xy=[x_padding_left+x, (h-(y_padding_bottom+y_padding_top))/2], stroke_width=3, fill=(0,0,0))
+            circle = g.circle(r=circle_r, xy=[x_padding_left+x, (h-(y_padding_bottom+y_padding_top))/2], stroke=(0,0,0), stroke_width=3, fill=(1,1,0))
             circle.draw(surface)
             if(n<limit):
                 n=n+1
