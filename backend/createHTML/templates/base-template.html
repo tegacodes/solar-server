@@ -20,13 +20,8 @@
     crossorigin="anonymous" />
   <link rel="icon" href="favicon.png" />
   <style>
-    {
-      % if batteryPercentage>=30 %
-    }
-
-      {
-      % else %
-    }
+    {% if batteryPercentage >= 50 %}
+    {% else %}
 
     header h1 a {
       color: black;
@@ -36,9 +31,7 @@
       color: black;
     }
 
-      {
-      % endif %
-    }
+    {% endif %}
 
     a:hover {
       color: {
@@ -77,16 +70,16 @@
               <a href="design-research.html">Design Research</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Energy-centered design</a>
+                  <a href="design-research.html#Energy-centered-design">Energy-centered design</a>
                 </li>
                 <li>
-                  <a href="#">Technology</a>
+                  <a href="design-research.html#Technology">Technology</a>
                 </li>
                 <li>
-                  <a href="#">Literature review</a>
+                  <a href="design-research.html#Literature-review">Literature review</a>
                 </li>
                 <li>
-                  <a href="#">Bibliography</a>
+                  <a href="design-research.html#Bibliography">Bibliography</a>
                 </li>
               </ul>
             </li>
@@ -94,13 +87,13 @@
               <a href="resources.html">Resources</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Software</a>
+                  <a href="resources.html#Software">Software</a>
                 </li>
                 <li>
-                  <a href="#">Hardware</a>
+                  <a href="resources.html#Hardware">Hardware</a>
                 </li>
                 <li>
-                  <a href="#">Glossary</a>
+                  <a href="resources.html#Glossary">Glossary</a>
                 </li>
               </ul>
             </li>
@@ -114,15 +107,15 @@
         </nav>
       </div>
     </nav>
-    {% if batteryPercentage >= 40 %}
+    {% if batteryPercentage >= 50 %}
     <div class="requests menu">
-      {{hits}} page requests · {{count_data}} MB of data transferred 
+      {{hits}} page requests · {{count_data}} MB of data transferred total
     </div>
     {% else %}
     {% endif %}
     <!-- side panel -->
     <div class="panel">
-      {% if batteryPercentage >= 40 %}
+      {% if batteryPercentage >= 50 %}
       <div class="battery-status box">
         {% else %}
         <div class="battery-status box" style="height: unset;">
@@ -146,7 +139,7 @@
         </div>
         {% if batteryPercentage >= 40 %}
         <div class="photo box" role="img" aria-label="Photo of Brooklyn, NY where the solar panel is located">
-          <p>{{city}} {{time}} ({{zone}})</p>
+          <p>{{city}} {{time}} UTC-4</p>
         </div>
         <div class="weather box">
           <h3>this website is coming from</h3>

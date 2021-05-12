@@ -3,6 +3,7 @@
 {% if batteryPercentage >= 40 %}
 <div class="sunchart box">
   <h3>sun chart</h3>
+  <img src="images/sunchart.png" alt="Graph showing current time and azimuth of the Sun" class="responsive" id="sunchart-img">
 </div>
 <div class="sunlight box">
   <h3>sunlight</h3>
@@ -10,6 +11,7 @@
 </div>
 <div class="shadowchart box">
   <h3>shadow chart</h3>
+  <img src="images/shadowchart.png" alt="Graph showing current length of shadow" class="responsive">
 </div>
 <div class="seedetails button box"><a href="system-data.html">see detailed stats</a></div>
 {% else %}
@@ -42,13 +44,13 @@
     less energy is available. A raw text version of the site is served when the battery is low, and it may go offline from time to time.</p>
 
     <p>Inspiration and precedents for this project include Low-tech Magazine’s <a href="https://solar.lowtechmagazine.com/">solar-powered website</a>, that drastically reduces the 
-      energy required for users to access the magazine content, artist <a href="http://www.janavirgin.com/"></a>Joana Moll's work</a> exploring the energy footprint of the Internet 
+      energy required for users to access the magazine content, artist <a href="http://www.janavirgin.com/">Joana Moll's work</a> exploring the energy footprint of the Internet 
       and <a href="https://alexnathanson.com/">Alex Nathanson’s</a> solar power art archive. 
     </p>
   <h4>Team</h4>
       <p>Faculty: Tega Brain and Benedetta Piantella</p>
-      <p>Hardware and research: Alex Nathanson, JiYoung Moon </p>
-      <p>Design and development: JeeYoon Hyun, Alex Markova, Keita Ohshiro</p>
+      <p>Research & Systems Design: Alex Nathanson, Keita Ohshiro </p>
+      <p>Web Design and Development: Jeeyoon Hyun, Alex Markova & JiYoung Moon</p>
 </div>
 </div>
 {% endblock %}

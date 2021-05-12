@@ -2,7 +2,7 @@
 {% block content %}
 <div class="content box" style="grid-row:unset;">
   <h2>Design Research</h2>
-  <h4>Energy Centered Design</h4>
+  <h4 id ="Energy-centered-design">Energy Centered Design</h4>
 
 <p>We are exploring the concept of energy-centered design that considers the energy impacts of interfaces 
   as well as the experience for the user. Energy centered design acknowledges the user isn’t a bounded individual, 
@@ -13,12 +13,14 @@
         <li>Using static page generation rather than a framework like wordpress that does more computation client side.</li>
           <li>Dithering and reducing the size of all assets hosted on the website using tools like ImageMagic.</li>
 </ul>
-<h4>Technology</h4>
+<h4 id ="Technology">Technology</h4>
 <h5>Hardware design choices:</h5>
 <ul>
-  <li>Computer: Raspberry Pi 4. We began our explorations using the same single board computer used by LOW←TECH MAGAZINE's solar-powered server, an Olimex board. This board was promising because of its low power consumption, but required a backup power supply to gracefully shut down and restart. RaspberryPi 4s had just been released when we embarked on this research they deal more effectively with power outages.  </li>
-  <li>Battery: Sealed Lead-Acid batteries </li>
-  <li>Solar Panel: We are using a monocrystalline silicon panel. The embedded energy of monocrystalline silicon is among the highest compared to other types of panels, at approximately 6,000 MJ/m^2. The EPBT is also among the highest, at approximately 8 years, and the EROI, at 9.0, is among the lowest. Despite all this, the mono-Si panel has among the highest efficiency at roughly 14%. The high efficiency of mono-Si panels make them highly desirable for our purposes, as this allows us to use a single panel on a roof instead of installing an entire array to power the server.</li>
+  <li><strong>Raspberry Pi4:</strong> Our biggest hardware inspiration for this project was <a href="https://www.lowtechmagazine.com/">LOW←TECH MAGAZINE</a> solar-powered website system. We began our explorations using the same single board computer, an Olimex board, which seemed really promising because of its low power consumption, but the board required a backup power supply to gracefully shut down and restart. RaspberryPi 4s had just been released when we embarked on this research and as part of their launch news circulated that the RaspberryPi Foundation was running their website off of a cluster of RPi4 computers, which do deal more effectively with power outages.  </li>
+  <li><strong>MPPT Charge Controller with COM:</strong> MPPT charge controllers are some of the most efficient controllers on the market and are specifically designed to harness the full power from the solar panels to charge the batteries most effectively. For example, if it becomes cloudy, a MPPT charge controller will decrease the amount of current drawn in order to maintain a desirable voltage at the output, viceversa when it becomes sunny again, the MPPT controller will allow more current from the solar panel once again. MPPT charge controllers also limit their output to ensure batteries don’t get overcharged as they will monitor and adjust their input accordingly, therefore extending the life of the battery. There are many MPPT charge controllers on the market, some far cheaper than the one we are using, but we wanted to be able to get actual real-time data from our system to keep track of specific data points such as PV Voltage, PV overall Power, Battery Voltage as well as Load Voltage/Current instead of deriving this information from external sources and calculations, therefore we chose a reliable charge controller that speaks Serial communication in order to capture this data in real time directly from the charge controller with minimal external hardware.</li>
+  <li><strong>Battery choice:</strong> We chose to use Sealed Lead-Acid batteries (SLAB) because it’s a very mature technology and these types of batteries are fairly resilient to abuse, overcharging and different environmental conditions. Since we are hoping people across the world can replicate this system, we wanted to use components for our system design that are widely available in most markets around the world, that are affordable and, when not available, that can be shipped easily through post and courier services. </li>
+  <li><strong>Panel Choice / Our PV System:</strong> The solar panel in our recommended system is a monocrystalline silicon panel. The embedded energy of monocrystalline silicon is among the highest compared to other types of panels, at approximately 6,000 MJ/m^2. The EPBT is also among the highest, at approximately 8 years, and the EROI, at 9.0, is among the lowest. Despite all this, the mono-Si panel has among the highest efficiency at roughly 14%. The high efficiency of mono-Si panels make them highly desirable for our purposes, as this allows us to use a single panel on a roof instead of installing an entire array to power the server.</li>
+  <li><strong>Battery Protect:</strong> Another strategy we implemented to protect our system components but in particular the battery, was to add a battery protection circuit in order to allow the battery to get properly charged before the system would allow power to flow to the server, so that the server and battery would not be simultaneously competing for power. In most renewable energy systems, batteries are usually the most expensive components as well the ones with the shortest life span as most batteries usually need to be replaced in ~5 years if properly maintained. Through the use of an MPPT charge controller and the implementation of a battery disconnect circuit we wanted to ensure the healthiest life for our battery. </li>
 </ul>
   <h5>Software design choices:</h5>
   <ul>
@@ -26,7 +28,7 @@
     <li>The server is an apache server.</li>
     <li>We decided not to use any Javascript on the frontend of this website and so all of our visualizations are generated server-side using python libraries such as MatPlotLib. Where possible, the generation of the visual assets on this site are done on the server rather than in the browser. We adopted this as an approach that fosters accountability for our design decisions. We know that the computational cycles required to generate our imagery are powered by solar energy rather than potentially powered as fossil energy in the browser. This design approach also minimizes the energy consumption for the user. </li>
 </ul>
-<h4>Literature Review</h4>
+<h4 id ="Literature-review">Literature Review</h4>
 <p><i>By Alex Nathanson, 2019.</i></p>
 <h5>Server Energy Consumption</h5>
 <p>There is a significant amount of uncertainty and disagreement when it comes to analyzing the energy consumption of information and communication technology (ICT) and even more when looking specifically at server energy consumption. This uncertainty spans decades and its history is thoroughly described in Assessing the environmental impact of data centres part 1: Background, energy use and metrics (Whitehead, Andrews, Shah, and Maidment). The system boundary, i.e. what elements of the system are or are not being analyzed, and the method of analysis are two primary decisions that researchers must make and prior studies show that there isn’t a consistent approach as to how to make these determinations (can we list the refs to some of these studies?). These assessments require researchers to make a variety of assumptions about typical system usage as well as rely on pre-existing energy analysis and life cycle analysis (LCA) of specific subsystems. This prior work is often beyond their field of expertise and introduces additional variability and potentially inaccuracy.</p>
@@ -43,7 +45,94 @@
     <li>To what extent does data from independent servers, cached by companies operating data centers, like Google, effect energy considerations?</li>
     <li>Additionally, data centers are designed to operate at near peak capacity, however a number of papers have mentioned that many data center machines run idle and are dramatically under utilized, which leads to significant energy wastes. How does this underutilization change the calculus regarding the impacts of data centers?</li>
   </ul>
+
+<h4 id="Bibliography">Bibliography</h4>
+<ul>
+  <li>
+    Aslan, Joshua, Kieren Mayers, Jonathan G. Koomey, and Chris France. “Electricity Intensity of Internet Data Transmission: Untangling the Estimates.” <i>Journal of Industrial Ecology</i> 22, no. 4 (2017): 785–98. https://doi.org/10.1111/jiec.12630.
+	This source aims to identify accurate electricity intensity estimates to better understand the impact of the consumption of the Information and Communications Technology (ICT) industry over time.
+  </li>
+  <li>
+    Baliga, J, R W A Ayre, K Hinton, and R S Tucker. “Green Cloud Computing: Balancing Energy in Processing, Storage, and Transport.” <i>Proceedings of the IEEE</i> 99, no. 1 (2011): 149–67. https://doi.org/10.1109/jproc.2010.2060451.
+This source analyzes energy consumption in public and private cloud computing, considering factors such as switching, transmission, data processing, and data storage.
+  </li>
+  <li>
+    Cardenas, Ibsen C., and Johannes I.M. Halman. “Coping with Uncertainty in Environmental Impact Assessments: Open Techniques .” <i>Environmental Impact Assessment Review</i> 60 (September 2016): 24–39. https://doi.org/10.1016/j.eiar.2016.02.006. 
+This source aims to identify literary techniques that help manage uncertainty in projects and use them as references to examine environmental impact assessment (EIA) guidelines in Colombia, as well as offer suggestions on dealing with uncertainties in such assessments.
+  </li>
+  <li>
+    Coroama, Vlad C., and Lorenz M. Hilty. “Assessing Internet Energy Intensity: A Review of Methods and Results.” <i>Environmental Impact Assessment Review</i> 45 (2014): 63–68. https://doi.org/10.1016/j.eiar.2013.12.004.
+	This source reviews methods used in assessing average intensity of Internet transmissions and analyzes two main factors that cause the lack of precision in results.
+  </li>
+  <li>
+    De Decker, Kris, Roel Roscam Abbing, and Marie Otsuka. “How Sustainable Is a Solar Powered Website?” <i>Low Tech Magazine</i>, January 28, 2020. https://solar.lowtechmagazine.com/.
+	This source presents the analytics of a solar powered website and details possible improvements based on the optimal balance between saving energy and how long the server is able to stay online. 
+  </li>
+  <li>
+    Ensmenger, Nathan, and Rebecca Slayton. “Computing and the Environment: Introducing a Special Issue of Information & Culture.” <i>Information & Culture: A Journal of History</i> 52, no. 3 (2017): 295–303. https://doi.org/10.1353/lac.2017.0011.
+	This source explores the relationship between the information economy and the physical environment and the natural resources that support the built digital world.
+  </li>
+  <li>
+    “A FEMINIST SERVER MANIFESTO 0.01.” Are You Being Served? → Summit_afterlife.md, 2014. https://areyoubeingserved.constantvzw.org/Summit_afterlife.xhtml.
+	This source is a manifesto penned in response to discussions at the Feminist Server Summit about the relations and dependency of a hypothetical feminist server.
+  </li>
+  <li>Heddeghem, Ward Van, Willem Vereecken, Didier Colle, Mario Pickavet, and Piet Demeester. “Distributed Computing for Carbon Footprint Reduction by Exploiting Low-Footprint Energy Availability.” <i>Future Generation Computer Systems</i> 28, no. 2 (2012): 405–14. https://doi.org/10.1016/j.future.2011.05.004.
+    This source examines the limited availability of renewable energy sources and the possibility of redistributing data centers globally with consideration of the impact of manufacturing and location to reduce the total carbon footprint.
+  </li>
+  <li>Hirsch-Dick, Markus, Eva Kern, Jakob Drangmeister, Stefan Naumann, and Timo Johann. “Measurement and Rating of Software-Induced Energy Consumption of Desktop PCs and Servers.” <i>Measurement and Rating of Software-induced Energy Consumption of Desktop PCs and Servers</i>, 2011. https://www.semanticscholar.org/paper/Measurement-and-Rating-of-Software-induced-Energy-Hirsch-Dick-Kern/8dd8d4a28425f1d18358d0eb360800b4e3bdaa6e.
+    This source addresses the lack of awareness about energy efficiency in the computer software field and presents a measurement method to guide developers and users to make educated decisions about implementation and consumption of software.
+  </li>
+  <li>
+    Hochschorner, Elisabeth, György Dán, and Åsa Moberg. “Carbon Footprint of Movie Distribution via the Internet: a Swedish Case Study.” <i>Journal of Cleaner Production</i> 87 (2015): 197–207. https://doi.org/10.1016/j.jclepro.2014.09.012.
+	This source assesses the environmental impact of two movie streaming alternatives, peer-to-peer (P2P) and internet protocol television (IPTV).
+  </li>
+  <li>Jardim, Elizabeth, and Valentina Stackl. “ReThinkIT.” Greenpeace USA, May 19, 2020. https://www.greenpeace.org/usa/issues/rethinkit/.
+    This source introduces the physicality of the internet and the impact of the highly concentrated data centers on the environment.
+  </li>
+  <li>
+    Kaup, Fabian, Philip Gottschling, and David Hausheer. “PowerPi: Measuring and Modeling the Power Consumption of the Raspberry Pi.” <i>39th Annual IEEE Conference on Local Computer Networks</i>, 2014. https://doi.org/10.1109/lcn.2014.6925777.
+	This source presents PowerPi, a power consumption model for the Raspberry Pi intended to optimize the energy consumption of household connections to the internet via DSL or cable.
+  </li>
+  <li>
+    Kern, Eva, Markus Dick, Stefan Naumann, and Tim Hiller. “Impacts of Software and Its Engineering on the Carbon Footprint of ICT.” <i>Environmental Impact Assessment Review</i> 52 (2015): 53–61. https://doi.org/10.1016/j.eiar.2014.07.003.
+	This source proposes a way to calculate the carbon footprint of a software product, as well as apply the calculation into the development stages of the product.
+  </li>
+  <li>
+    Moll, Joana. “Joana Moll - Deep Carbon.” <i>Research Values 2018</i> (blog), January 3, 2018. https://researchvalues2018.wordpress.com/2018/01/03/joana-moll-deep-carbon/.
+	This source aims to bring awareness to the lack of material representation of the internet to its users as it accumulates more interactions and generates more information.
+  </li>
+  <li>
+    Moll, Joana, and Andrea Noni. “CRITICAL INTERFACE TOOLBOX.” CRITICAL INTERFACE TOOLBOX, n.d. https://crit.hangar.org/toolbox/.
+	This source is a compilation of tools intended to encourage critical thought about the configuration of interfaces.
+  </li>
+  <li>
+    Mulrow, John, Katherine Machaj, Joshua Deanes, and Sybil Derrible. “The State of Carbon Footprint Calculators: An Evaluation of Calculator Design and User Interaction Features.” <i>Sustainable Production and Consumption</i> 18 (2019): 33–40. https://doi.org/10.1016/j.spc.2018.12.001.
+	This source evaluates the online carbon footprint calculators for individuals and presents recommendations for improving their designs based on feedback from user interaction and performance evaluation indices.
+  </li>
+  <li>
+    Pärssinen, M., M. Kotila, R. Cuevas, A. Phansalkar, and J. Manner. “Environmental Impact Assessment of Online Advertising.” <i>Environmental Impact Assessment Review</i> 73 (2018): 177–200. https://doi.org/10.1016/j.eiar.2018.08.004.
+	This source analyzes the online advertising industry as an economic component and an essential factor in understanding the carbon footprint of the internet.
+  </li>
+  <li>
+    Whitehead, Beth, Deborah Andrews, Amip Shah, and Graeme Maidment. “Assessing the Environmental Impact of Data Centres Part 1: Background, Energy Use and Metrics.” <i>Building and Environment</i> 82 (December 2014): 151–59. https://doi.org/10.1016/j.buildenv.2014.08.021.
+	This source describes the energy consumption of data centers, the environmental impact of the Information and Communications Technology (ICT) industry and the inaccuracy of single-issue metrics that focus on carbon, water, and compute efficiency rather than the entirety of the integrated system.
+  </li>
+  <li>
+    Zhao, Bo, Wenjie Hu, Qiang Zheng, and Guohong Cao. “Energy-Aware Web Browsing on Smartphones.” <i>IEEE Transactions on Parallel and Distributed Systems</i> 26, no. 3 (2015): 761–74. https://doi.org/10.1109/tpds.2014.2312931.
+	This source identifies power consumption issues in smartphone based web browsing and introduces a solution to optimize browsing by reducing power consumption, reduce loading time and increase network capacity.
+  </li>
+</ul>
 </div>
-<h5>Bibliography</h5>
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
 
