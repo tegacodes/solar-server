@@ -109,7 +109,7 @@
     </nav>
     {% if batteryPercentage >= 50 %}
     <div class="requests menu">
-      page size: 737.7 KB · page requests: {{hits}} · data transferred by server: {{count_data}} MB 
+       this website weighs: 737.7 KB · page requests: {{hits}} · data transferred by server: {{count_data}} MB 
     </div>
     {% else %}
     {% endif %}
@@ -120,7 +120,7 @@
         {% else %}
         <div class="battery-status box" style="height: unset;">
           {% endif %}
-          <h3>&#9632;server battery status</h3>
+          <h3>&#9632; server battery status</h3>
           <h1 class="stats-res desc">{{batteryPercentage}}%</h1>
           {% if batteryPercentage >= 40 %}
           <h1 class="stats-res desc">Hi-res mode</h1>
@@ -142,7 +142,7 @@
           <p>{{city}} {{time}} UTC-4</p>
         </div>
         <div class="weather box">
-          <h3>&#9632;this website is coming from</h3>
+          <h3>&#9632; this website is coming from</h3>
           <h1>Brooklyn, USA</h1>
           <div class="weather-flex">
             <p class="stats-weather desc"><i class="fas fa-cloud-sun"></i>{{weather}}</p>
